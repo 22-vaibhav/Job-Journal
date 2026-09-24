@@ -365,9 +365,9 @@ Cron jobs run server-side using `node-cron`. The cron scheduler runs within the 
 | `/settings` | Settings | ✅ | Edit profile, notifications, password, theme |
 | `*` | — | — | Fallback redirect to `/login` |
 
----
+<!-- --- -->
 
-## Contributing
+<!-- ## Contributing
 
 1. Fork the repository
 2. Create a feature branch: `git checkout -b feature/your-feature`
@@ -375,4 +375,4 @@ Cron jobs run server-side using `node-cron`. The cron scheduler runs within the 
 4. Push to your fork: `git push origin feature/your-feature`
 5. Open a pull request
 
-Please ensure you never commit `.env` files containing real secrets. Use the provided `.env.example` files as a reference.
+Please ensure you never commit `.env` files containing real secrets. Use the provided `.env.example` files as a reference. -->
