@@ -1,7 +1,7 @@
 import JournalSection from "./JournalSection";
 import NotesSection from "./NotesSection";
 import JournalActions from "./JournalActions";
-import HelpTooltip from "../common/HelpTooltip";
+import HelpToolTip from "../common/HelpToolTip";
 
 const JournalForm = ({
     journal,

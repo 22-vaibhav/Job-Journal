@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Trash2, Plus } from "lucide-react";
-import HelpTooltip from "../common/HelpTooltip";
+import HelpToolTip from "../common/HelpToolTip";
 
 const JournalSection = ({ title, items, setItems, disabled, help, }) => {
     const [value, setValue] = useState("");
@@ -30,7 +30,7 @@ const JournalSection = ({ title, items, setItems, disabled, help, }) => {
                 </h2>
 
                 {help && (
-                    <HelpTooltip
+                    <HelpToolTip
                         title={help.title}
                         description={help.description}
                         examples={help.examples}

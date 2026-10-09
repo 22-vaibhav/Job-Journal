@@ -1,5 +1,5 @@
 import { NotebookPen } from "lucide-react";
-import HelpTooltip from "../common/HelpTooltip";
+import HelpToolTip from "../common/HelpToolTip";
 
 const NotesSection = ({ notes, setNotes, disabled, }) => {
     return (
@@ -15,7 +15,7 @@ const NotesSection = ({ notes, setNotes, disabled, }) => {
                     Notes
                 </h2>
 
-                <HelpTooltip
+                <HelpToolTip
                     title="Notes"
 
                     description="Use this section for any additional information that doesn't fit into the other categories."
