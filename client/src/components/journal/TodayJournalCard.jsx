@@ -48,11 +48,32 @@ const TodayJournalCard = () => {
     if (!journal) {
         return (
             <Card className="h-fit">
-                <div className="flex flex-col items-center justify-center gap-2 py-6 text-center">
-                    <BookOpen size={22} className="text-slate-300" />
-                    <p className="text-slate-500 text-sm">
-                        No journal found.
-                    </p>
+                <div className="flex flex-col items-center justify-center gap-3 py-6 text-center">
+                    <BookOpen size={24} className="text-slate-300" />
+
+                    <div>
+                        <p className="text-slate-900 font-medium">
+                            Today's journal hasn't been started yet.
+                        </p>
+
+                        <p className="text-slate-500 text-sm mt-1">
+                            Start documenting your work for today.
+                        </p>
+                    </div>
+
+                    <Button
+                        className="mt-2 w-full flex items-center justify-center gap-2"
+                        onClick={() => {
+                            navigate(ROUTES.JOURNAL, {
+                                state: {
+                                    startNew: true,
+                                },
+                            });
+                        }}
+                    >
+                        <PenLine size={16} />
+                        Start Today's Journal
+                    </Button>
                 </div>
             </Card>
         );

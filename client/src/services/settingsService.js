@@ -38,3 +38,16 @@ export const changePassword = async (passwordData) => {
 
     return response.data;
 };
+
+export const deleteAccount = async (confirmation) => {
+    const response = await api.delete(
+        "/auth/delete-account",
+        {
+            data: {
+                confirmation,
+            },
+        }
+    );
+
+    return response.data;
+};

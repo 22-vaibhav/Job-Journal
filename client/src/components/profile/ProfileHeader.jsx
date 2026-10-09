@@ -1,10 +1,58 @@
-const ProfileHeader = ({ user }) => {
+import { useRef, useState } from "react";
+import { toast } from "react-toastify";
+import { uploadProfileImage } from "../../services/userService";
+import { Pencil } from "lucide-react";
+
+
+const ProfileHeader = ({ user, onProfileImageUpdate }) => {
+
+    const [uploading, setUploading] = useState(false);
+    const fileInputRef = useRef(null);
 
     const initials = user?.name
         ?.split(" ")
         .map((word) => word[0])
         .join("")
         .toUpperCase();
+
+    const handleProfileImageChange = async (event) => {
+        const file = event.target.files?.[0];
+
+        if (!file) return;
+
+        if (!file.type.startsWith("image/")) {
+            toast.error("Please select an image file.");
+            return;
+        }
+
+        if (file.size > 5 * 1024 * 1024) {
+            toast.error("Image size must be less than 5 MB.");
+            return;
+        }
+
+        try {
+            setUploading(true);
+
+            const updatedUser = await uploadProfileImage(file);
+
+            if (onProfileImageUpdate) {
+                onProfileImageUpdate(updatedUser);
+            }
+
+            toast.success("Profile picture updated.");
+        } catch (error) {
+            toast.error(
+                error.response?.data?.message ||
+                "Unable to upload profile picture."
+            );
+        } finally {
+            setUploading(false);
+
+            if (fileInputRef.current) {
+                fileInputRef.current.value = "";
+            }
+        }
+    };
 
     return (
         <div className="relative overflow-hidden rounded-2xl border border-slate-200/70 bg-white shadow-[0_1px_2px_rgba(16,24,40,0.04),0_8px_24px_-8px_rgba(16,24,40,0.10)]">
@@ -38,30 +86,77 @@ const ProfileHeader = ({ user }) => {
 
                 <div className="flex flex-col sm:flex-row sm:items-end gap-5">
 
-                    {/* Avatar — overlaps the banner via negative margin, independent of the text beside it */}
+                    {/* Avatar */}
+                    {/* Avatar */}
                     <div className="shrink-0 mx-auto sm:mx-0 -mt-14 sm:-mt-16">
-                        <div className="rounded-full p-1.5 bg-white shadow-[0_8px_20px_-6px_rgba(16,24,40,0.25)]">
+                        <div className="relative">
+
+                            {/* Avatar */}
                             <div
-                                className="w-28 h-28 sm:w-32 sm:h-32 rounded-full flex items-center justify-center text-white relative overflow-hidden"
-                                style={{
-                                    background:
-                                        "linear-gradient(135deg, #0F6B5C 0%, #1B9C87 100%)",
-                                }}
+                                className="rounded-full p-1.5 bg-white shadow-[0_8px_20px_-6px_rgba(16,24,40,0.25)]"
                             >
                                 <div
-                                    className="absolute inset-0 opacity-20"
+                                    className="w-28 h-28 sm:w-32 sm:h-32 rounded-full flex items-center justify-center text-white relative overflow-hidden"
                                     style={{
-                                        backgroundImage:
-                                            "radial-gradient(circle at 30% 20%, #ffffff 0, transparent 45%)",
+                                        background:
+                                            "linear-gradient(135deg, #0F6B5C 0%, #1B9C87 100%)",
                                     }}
-                                />
-                                <span
-                                    className="relative text-3xl sm:text-4xl font-semibold tracking-wide"
-                                    style={{ fontFamily: "'Fraunces', serif" }}
                                 >
-                                    {initials}
-                                </span>
+                                    {user?.profileImage ? (
+                                        <img
+                                            src={user.profileImage}
+                                            alt={user.name}
+                                            className="w-full h-full object-cover"
+                                        />
+                                    ) : (
+                                        <>
+                                            <div
+                                                className="absolute inset-0 opacity-20"
+                                                style={{
+                                                    backgroundImage:
+                                                        "radial-gradient(circle at 30% 20%, #ffffff 0, transparent 45%)",
+                                                }}
+                                            />
+
+                                            <span
+                                                className="relative text-3xl sm:text-4xl font-semibold tracking-wide"
+                                                style={{
+                                                    fontFamily: "'Fraunces', serif",
+                                                }}
+                                            >
+                                                {initials}
+                                            </span>
+                                        </>
+                                    )}
+
+                                    {uploading && (
+                                        <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+                                            <div className="w-7 h-7 rounded-full border-2 border-white border-t-transparent animate-spin" />
+                                        </div>
+                                    )}
+                                </div>
                             </div>
+
+                            {/* Pencil button */}
+                            <button
+                                type="button"
+                                onClick={() => fileInputRef.current?.click()}
+                                disabled={uploading}
+                                className="absolute bottom-1 right-1 flex h-9 w-9 items-center justify-center rounded-full bg-white border border-slate-200 text-slate-700 shadow-md transition-all duration-200 hover:scale-110 hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-200 hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-60"
+                                aria-label="Change profile picture"
+                            >
+                                <Pencil size={16} />
+                            </button>
+
+                            {/* Hidden file input */}
+                            <input
+                                ref={fileInputRef}
+                                type="file"
+                                accept="image/*"
+                                onChange={handleProfileImageChange}
+                                className="hidden"
+                            />
+
                         </div>
                     </div>
 

@@ -4,6 +4,7 @@ import SettingsSidebar from "../../components/settings/SettingsSidebar";
 import ProfileSettings from "../../components/settings/ProfileSettings";
 import NotificationSettings from "../../components/settings/NotificationSettings";
 import AccountSettings from "../../components/settings/AccountSettings";
+import DangerZone from "../../components/settings/DangerZone";
 
 const SettingsPage = () => {
     const [activeTab, setActiveTab] = useState("profile");
@@ -36,20 +37,7 @@ const SettingsPage = () => {
                 );
 
             case "danger":
-                return (
-                    <div>
-                        <h2
-                            className="text-2xl font-semibold text-red-600 tracking-tight"
-                            style={{ fontFamily: "'Fraunces', serif" }}
-                        >
-                            Danger Zone
-                        </h2>
-
-                        <p className="mt-2 text-slate-500">
-                            Permanently delete your ResumeLog AI account.
-                        </p>
-                    </div>
-                );
+                return <DangerZone />;
 
             default:
                 return null;

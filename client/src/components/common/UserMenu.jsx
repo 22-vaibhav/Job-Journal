@@ -76,8 +76,16 @@ const UserMenu = () => {
                     onClick={() => setOpen((prev) => !prev)}
                     className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-2 py-1.5 transition hover:bg-slate-50"
                 >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-linear-to- from-emerald-500 to-teal-600 text-sm font-semibold text-white">
-                        {initials}
+                    <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-green-500 text-sm font-semibold text-black">
+                        {user?.profileImage ? (
+                            <img
+                                src={user.profileImage}
+                                alt={user?.name || "Profile"}
+                                className="h-full w-full object-cover"
+                            />
+                        ) : (
+                            initials
+                        )}
                     </div>
 
                     <ChevronDown

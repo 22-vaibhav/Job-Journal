@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { Loader2 } from "lucide-react";
+import { Loader2, Camera } from "lucide-react";
 
 import { ROUTES } from "../../constants/routes";
 import { registerUser } from "../../services/authService";
@@ -27,6 +27,8 @@ const RegisterForm = () => {
     const navigate = useNavigate();
 
     const [loading, setLoading] = useState(false);
+    const [profileImage, setProfileImage] = useState(null);
+    const [profilePreview, setProfilePreview] = useState("");
 
     const [formData, setFormData] = useState({
         name: "",
@@ -46,6 +48,15 @@ const RegisterForm = () => {
             [e.target.name]: e.target.value,
         });
 
+    };
+
+    const handleProfileImageChange = (e) => {
+        const file = e.target.files?.[0];
+
+        if (!file) return;
+
+        setProfileImage(file);
+        setProfilePreview(URL.createObjectURL(file));
     };
 
     const handleSubmit = async (e) => {
@@ -71,15 +82,24 @@ const RegisterForm = () => {
 
             setLoading(true);
 
-            await registerUser({
-                name: formData.name,
-                email: formData.email,
-                password: formData.password,
-                currentCompany: formData.currentCompany,
-                currentRole: formData.currentRole,
-                experience: Number(formData.experience) || 0,
-                careerGoal: formData.careerGoal,
-            });
+            const data = new FormData();
+
+            data.append("name", formData.name);
+            data.append("email", formData.email);
+            data.append("password", formData.password);
+            data.append("currentCompany", formData.currentCompany);
+            data.append("currentRole", formData.currentRole);
+            data.append(
+                "experience",
+                Number(formData.experience) || 0
+            );
+            data.append("careerGoal", formData.careerGoal);
+
+            if (profileImage) {
+                data.append("profileImage", profileImage);
+            }
+
+            await registerUser(data);
 
             toast.success("Registration successful.");
 
@@ -106,6 +126,50 @@ const RegisterForm = () => {
             onSubmit={handleSubmit}
             className="space-y-9"
         >
+
+            {/* Profile Picture */}
+
+            <div className="flex flex-col items-center">
+                <div className="relative">
+
+                    <div
+                        className="w-28 h-28 rounded-full flex items-center justify-center overflow-hidden text-white shadow-md"
+                        style={{
+                            background:
+                                "linear-gradient(135deg, #0F6B5C 0%, #1B9C87 100%)",
+                        }}
+                    >
+                        {profilePreview ? (
+                            <img
+                                src={profilePreview}
+                                alt="Profile preview"
+                                className="w-full h-full object-cover"
+                            />
+                        ) : (
+                            <Camera size={30} />
+                        )}
+                    </div>
+
+                    <label
+                        htmlFor="profileImage"
+                        className="absolute bottom-0 right-0 flex h-9 w-9 items-center justify-center rounded-full bg-white border border-slate-200 text-slate-700 shadow-md cursor-pointer transition-all duration-200 hover:scale-110 hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-200 hover:shadow-lg"
+                    >
+                        <Camera size={16} />
+                    </label>
+
+                    <input
+                        id="profileImage"
+                        type="file"
+                        accept="image/*"
+                        onChange={handleProfileImageChange}
+                        className="hidden"
+                    />
+                </div>
+
+                <p className="mt-3 text-sm text-slate-500">
+                    Profile Picture <span className="text-slate-400">(Optional)</span>
+                </p>
+            </div>
 
             {/* Personal Information */}
 

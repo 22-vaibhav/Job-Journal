@@ -13,6 +13,7 @@ const journalRoutes = require("./routes/journalRoutes");
 const userRoutes = require("./routes/userRoutes");
 const settingsRoutes = require("./routes/settingsRoutes");
 const emailRoutes = require("./routes/emailRoutes");
+const documentRoutes = require("./routes/documentRoutes");
 
 require("./cron/dailyReminderCron");
 
@@ -26,6 +27,7 @@ app.use("/api/journal", journalRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/settings", settingsRoutes);
 app.use("/api/email", emailRoutes);
+app.use("/api/documents", documentRoutes);
 
 const PORT = process.env.PORT || 5000
 

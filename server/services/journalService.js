@@ -20,13 +20,6 @@ const getTodayJournal = async (userId) => {
         date: today
     })
 
-    if (!journal) {
-        journal = await JournalEntry.create({
-            user: userId,
-            date: today,
-            status: "draft"
-        })
-    }
     return journal
 }
 
@@ -94,6 +87,12 @@ const openJournal = async (userId, date) => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
+    // console.log("OPEN JOURNAL CALLED");
+    // console.log("userId:", userId);
+    // console.log("date:", date);
+    // console.log("selectedDate:", selectedDate);
+    // console.log("today:", today);
+
     if (selectedDate > today) {
         throw new Error("Future journals cannot be opened.");
     }
@@ -113,16 +112,32 @@ const openJournal = async (userId, date) => {
 
     // Today's journal should always exist
     if (selectedDate.getTime() === today.getTime()) {
-        const newJournal = await JournalEntry.create({
-            user: userId,
-            date: selectedDate,
-            status: "draft",
-        });
+        try {
+            const newJournal = await JournalEntry.create({
+                user: userId,
+                date: selectedDate,
+                status: "draft",
+            });
 
-        return {
-            journal: toJournalResponse(newJournal),
-            exists: true,
-        };
+            return {
+                journal: toJournalResponse(newJournal),
+                exists: true,
+            };
+        } catch (error) {
+            if (error.code === 11000) {
+                const existingJournal = await JournalEntry.findOne({
+                    user: userId,
+                    date: selectedDate,
+                });
+
+                return {
+                    journal: toJournalResponse(existingJournal),
+                    exists: true,
+                };
+            }
+
+            throw error;
+        }
     }
 
     // Missed day -> return temporary object only

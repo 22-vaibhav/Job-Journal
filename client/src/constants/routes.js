@@ -12,4 +12,6 @@ export const ROUTES = {
     INSIGHTS: "/insights",
 
     SETTINGS: "/settings",
+
+    DOCUMENTS: "/documents",
 };

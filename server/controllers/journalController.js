@@ -49,23 +49,22 @@ const getCalendar = async (req, res) => {
 
 const getToday = async (req, res) => {
     try {
-        const journal = await getTodayJournal(
-            req.user.userId
-        )
+        const journal = await getTodayJournal(req.user.userId);
 
         res.status(200).json({
             success: true,
             message: "Today's journal fetched successfully",
-            data: toJournalResponse(journal)
-        })
-    }
-    catch (error) {
+            data: journal ? toJournalResponse(journal) : null
+        });
+    } catch (error) {
+        console.error("Error fetching today's journal:", error);
+
         res.status(500).json({
             success: false,
             message: error.message
-        })
+        });
     }
-}
+};
 
 const saveDraft = async (req, res) => {
     try {
@@ -151,7 +150,12 @@ const openJournal = async (req, res, next) => {
         });
 
     } catch (error) {
-        next(error);
+        // console.error("OPEN JOURNAL ERROR:", error);
+
+        res.status(500).json({
+            success: false,
+            message: error.message,
+        });
     }
 };
 

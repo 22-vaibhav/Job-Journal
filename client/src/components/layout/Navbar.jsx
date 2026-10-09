@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import { Compass, Search, BarChart3 } from "lucide-react";
+import { Compass, Search, BarChart3, Files } from "lucide-react";
 
 import { ROUTES } from "../../constants/routes";
 
@@ -67,6 +67,16 @@ const Navbar = () => {
                         <Search size={16} />
                         Search
                     </NavLink>
+
+
+                    <NavLink
+                        to={ROUTES.DOCUMENTS}
+                        className={navLinkClasses}
+                    >
+                        <Files size={16} />
+                        Documents
+                    </NavLink>
+
                 </nav>
 
                 {/* User Menu */}

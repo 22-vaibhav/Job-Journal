@@ -6,9 +6,13 @@ import { getProfile } from "../../services/userService";
 import ProfileHeader from "../../components/profile/ProfileHeader";
 import UserInfoCard from "../../components/profile/UserInfoCard";
 
+import { useAuth } from "../../context/AuthContext";
+
 const ProfilePage = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const { setUser: setAuthUser } = useAuth();
 
   useEffect(() => {
     loadProfile();
@@ -74,7 +78,13 @@ const ProfilePage = () => {
           </h1>
         </div>
 
-        <ProfileHeader user={user} />
+        <ProfileHeader
+          user={user}
+          onProfileImageUpdate={(updatedUser) => {
+            setUser(updatedUser);
+            setAuthUser(updatedUser);
+          }}
+        />
 
         <UserInfoCard user={user} />
       </div>

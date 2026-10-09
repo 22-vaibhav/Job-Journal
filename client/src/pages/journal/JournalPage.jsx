@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import toast from "react-hot-toast";
 
 import Card from "../../components/ui/Card";
@@ -15,6 +15,7 @@ import {
     updateJournal,
     submitJournal,
     createJournal,
+    openJournal,
 } from "../../services/journalService"
 
 import { useNavigate, useLocation } from "react-router-dom";
@@ -34,6 +35,9 @@ const JournalPage = () => {
     const location = useLocation();
 
     const initialJournal = location.state?.journal;
+    const startNew = location.state?.startNew;
+
+    const startNewJournalCalled = useRef(false);
 
     const handleSave = async () => {
         try {
@@ -118,8 +122,42 @@ const JournalPage = () => {
             setLoading(false);
             return;
         }
+
+        if (startNew) {
+            startNewJournal();
+            return;
+        }
+
         loadJournal();
     }, []);
+
+    const startNewJournal = async () => {
+
+        if (startNewJournalCalled.current) {
+            return;
+        }
+
+        startNewJournalCalled.current = true;
+
+        try {
+            const today = new Date().toISOString().split("T")[0];
+
+            const response = await openJournal(today);
+
+            setJournal(response.data);
+
+            refreshCalendar();
+        } catch (error) {
+            console.error(error);
+
+            toast.error(
+                error.response?.data?.message ||
+                "Unable to start today's journal."
+            );
+        } finally {
+            setLoading(false);
+        }
+    };
 
     const loadJournal = async () => {
         try {
@@ -135,6 +173,10 @@ const JournalPage = () => {
 
     if (loading) {
         return <p>Loading...</p>;
+    }
+
+    if (!journal) {
+        return null;
     }
 
     return (

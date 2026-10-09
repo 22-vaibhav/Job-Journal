@@ -56,6 +56,11 @@ const userSchema = new mongoose.Schema(
             default: "",
         },
 
+        profileImagePublicId: {
+            type: String,
+            default: "",
+        },
+
         notifications: {
             dailyReminder: {
                 enabled: {

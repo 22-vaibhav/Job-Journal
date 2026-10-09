@@ -13,3 +13,16 @@ export const updateProfile = async (profileData) => {
 
     return response.data;
 };
+
+export const uploadProfileImage = async (imageFile) => {
+    const formData = new FormData();
+
+    formData.append("profileImage", imageFile);
+
+    const response = await api.post(
+        "/users/profile/image",
+        formData
+    );
+
+    return response.data.data;
+};

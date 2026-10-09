@@ -1,6 +1,7 @@
 const {
     getProfile,
     updateProfile,
+    uploadProfileImage,
 } = require("../services/userService");
 
 const getUserProfile = async (req, res, next) => {
@@ -34,7 +35,32 @@ const updateUserProfile = async (req, res, next) => {
     }
 };
 
+const uploadUserProfileImage = async (req, res, next) => {
+    try {
+        if (!req.file) {
+            return res.status(400).json({
+                success: false,
+                message: "Please select an image.",
+            });
+        }
+
+        const user = await uploadProfileImage(
+            req.user.userId,
+            req.file.buffer
+        );
+
+        res.status(200).json({
+            success: true,
+            message: "Profile image uploaded successfully.",
+            data: user,
+        });
+    } catch (error) {
+        next(error);
+    }
+};
+
 module.exports = {
     getUserProfile,
     updateUserProfile,
+    uploadUserProfileImage,
 };

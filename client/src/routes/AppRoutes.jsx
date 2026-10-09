@@ -12,6 +12,8 @@ import SearchPage from "../pages/search/SearchPage";
 import InsightsPage from "../pages/insights/InsightsPage";
 import SettingsPage from "../pages/settings/SettingsPage";
 
+import DocumentsPage from "../pages/documents/DocumentsPage";
+
 import ProtectedRoute from "./ProtectRoutes";
 import { ROUTES } from "../constants/routes";
 
@@ -51,6 +53,11 @@ const AppRoutes = () => {
                     <Route
                         path={ROUTES.PROFILE}
                         element={<ProfilePage />}
+                    />
+
+                    <Route
+                        path={ROUTES.DOCUMENTS}
+                        element={<DocumentsPage />}
                     />
 
                     <Route
