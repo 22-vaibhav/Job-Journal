@@ -31,9 +31,13 @@ app.use("/api/documents", documentRoutes);
 
 const PORT = process.env.PORT || 5000
 
+app.get("/health", (req, res) => {
+    res.status(200).json({ status: "ok", message: "Server is alive" });
+});
+
 app.get("/", (req, res) => {
     res.json({
-        message: "ResumeLog AI Backend running"
+        message: "JobJournal Backend running"
     })
 })
 
