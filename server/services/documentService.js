@@ -104,9 +104,17 @@ const deleteDocument = async (userId, documentId) => {
         throw new Error("Document not found.");
     }
 
-    await cloudinary.uploader.destroy(document.cloudinaryPublicId, {
-        resource_type: document.resourceType,
-    });
+    const result = await cloudinary.uploader.destroy(
+        document.cloudinaryPublicId,
+        {
+            resource_type: document.resourceType,
+            type: "authenticated",
+        }
+    );
+
+    if (result.result !== "ok" && result.result !== "not found") {
+        throw new Error("Failed to delete document from Cloudinary.");
+    }
 
     await document.deleteOne();
 
