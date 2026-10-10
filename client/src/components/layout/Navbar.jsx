@@ -28,7 +28,7 @@ const Navbar = () => {
                 >
                     <span className="flex h-12 w-12 items-center justify-center overflow-hidden">
                         <img
-                            src="../../../public/journal.png"
+                            src="/journal.png"
                             alt="JobJournal logo"
                             className="h-full w-full object-contain p-1.5"
                         />
