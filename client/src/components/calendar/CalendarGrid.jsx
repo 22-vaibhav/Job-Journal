@@ -101,18 +101,27 @@ const CalendarGrid = ({
 
     return (
         <>
-            <div className="grid grid-cols-7 gap-2 mb-3 text-center">
-                {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((d) => (
+            <div className="grid grid-cols-7 gap-1 sm:gap-2 mb-3 text-center">
+                {[
+                    { short: "S", full: "Sun" },
+                    { short: "M", full: "Mon" },
+                    { short: "T", full: "Tue" },
+                    { short: "W", full: "Wed" },
+                    { short: "T", full: "Thu" },
+                    { short: "F", full: "Fri" },
+                    { short: "S", full: "Sat" },
+                ].map((d, i) => (
                     <div
-                        key={d}
+                        key={i}
                         className="text-xs font-semibold uppercase tracking-wider text-slate-400"
                     >
-                        {d}
+                        <span className="sm:hidden">{d.short}</span>
+                        <span className="hidden sm:inline">{d.full}</span>
                     </div>
                 ))}
             </div>
 
-            <div className="grid grid-cols-7 gap-2">
+            <div className="grid grid-cols-7 gap-1 sm:gap-2">
                 {cells.map((cell, index) => (
                     <CalendarDay
                         key={index}

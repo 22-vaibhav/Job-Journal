@@ -387,7 +387,7 @@ const DocumentsPage = () => {
 
                 <div className="mt-2 flex flex-wrap items-center justify-between gap-4">
                     <div>
-                        <h1 className="text-3xl font-bold tracking-tight text-gray-900">
+                        <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-gray-900">
                             Document Vault
                         </h1>
 
@@ -533,7 +533,7 @@ const DocumentsPage = () => {
                     <button
                         type="submit"
                         disabled={!selectedFile || uploading}
-                        className="inline-flex items-center justify-center gap-2 rounded-lg bg-indigo-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-50"
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-lg bg-indigo-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-50"
                     >
                         <Upload size={17} />
                         {uploading ? "Uploading..." : "Upload document"}
@@ -702,7 +702,7 @@ const DocumentsPage = () => {
                                     </p>
                                 </div>
 
-                                <div className="mt-auto flex gap-3 pt-5">
+                                <div className="mt-auto flex flex-wrap gap-2 pt-5">
 
                                     <button
                                         type="button"

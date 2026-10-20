@@ -44,7 +44,7 @@ const FilterBar = ({ filters, setFilters, setKeyword, }) => {
 
     return (
 
-        <div className="flex flex-wrap items-center gap-4">
+        <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-3">
 
             {/* Status */}
 
@@ -52,7 +52,7 @@ const FilterBar = ({ filters, setFilters, setKeyword, }) => {
                 name="status"
                 value={filters.status}
                 onChange={handleChange}
-                className="border rounded-xl px-4 py-3 bg-white"
+                className="border rounded-xl px-4 py-3 bg-white w-full sm:w-auto"
             >
 
                 <option value="all">
@@ -75,7 +75,7 @@ const FilterBar = ({ filters, setFilters, setKeyword, }) => {
                 name="month"
                 value={filters.month}
                 onChange={handleChange}
-                className="border rounded-xl px-4 py-3 bg-white"
+                className="border rounded-xl px-4 py-3 bg-white w-full sm:w-auto"
             >
 
                 {
@@ -99,7 +99,7 @@ const FilterBar = ({ filters, setFilters, setKeyword, }) => {
                 name="year"
                 value={filters.year}
                 onChange={handleChange}
-                className="border rounded-xl px-4 py-3 bg-white"
+                className="border rounded-xl px-4 py-3 bg-white w-full sm:w-auto"
             >
 
                 <option value="">
@@ -125,15 +125,7 @@ const FilterBar = ({ filters, setFilters, setKeyword, }) => {
 
             <button
                 onClick={clearFilters}
-                className="
-                    ml-auto
-                    rounded-xl
-                    border
-                    px-5
-                    py-3
-                    hover:bg-slate-100
-                    transition
-                "
+                className="w-full sm:w-auto sm:ml-auto rounded-xl border px-5 py-3 hover:bg-slate-100 transition"
             >
                 Clear Filters
             </button>

@@ -18,7 +18,7 @@ const JournalForm = ({
     };
 
     return (
-        <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_2px_rgba(16,24,40,0.04),0_8px_24px_-8px_rgba(16,24,40,0.10)] p-6 sm:p-9">
+        <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_2px_rgba(16,24,40,0.04),0_8px_24px_-8px_rgba(16,24,40,0.10)] p-4 sm:p-9">
 
             <div className="space-y-9 divide-y divide-slate-100 [&>*:not(:first-child)]:pt-9">
 

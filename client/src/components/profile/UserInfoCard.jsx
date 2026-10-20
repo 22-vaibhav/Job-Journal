@@ -120,7 +120,7 @@ const UserInfoCard = ({
     };
 
     return (
-        <div className="grid lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
             {/* Personal Information */}
             <div className="relative bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_2px_rgba(16,24,40,0.04),0_8px_24px_-8px_rgba(16,24,40,0.10)] p-6 sm:p-8 overflow-hidden">
@@ -197,7 +197,7 @@ const UserInfoCard = ({
                         fallback="Not set"
                     />
 
-                    <div className="grid grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
                             <FieldLabel icon={icons.chart}>Experience</FieldLabel>
                             {

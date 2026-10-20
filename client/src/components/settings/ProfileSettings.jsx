@@ -189,7 +189,7 @@ const ProfileSettings = () => {
                     <button
                         type="submit"
                         disabled={saving}
-                        className="rounded-xl bg-emerald-700 px-6 py-3 font-semibold text-white shadow-sm transition-colors hover:bg-emerald-800 active:bg-emerald-900 disabled:cursor-not-allowed disabled:opacity-50"
+                        className="w-full sm:w-auto rounded-xl bg-emerald-700 px-6 py-3 font-semibold text-white shadow-sm transition-colors hover:bg-emerald-800 active:bg-emerald-900 disabled:cursor-not-allowed disabled:opacity-50"
                     >
                         {saving ? "Saving..." : "Save Changes"}
                     </button>

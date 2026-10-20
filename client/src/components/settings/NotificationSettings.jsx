@@ -146,7 +146,7 @@ const NotificationSettings = () => {
             <div className="flex justify-end pt-2">
                 <button
                     onClick={handleSave}
-                    className="rounded-xl bg-emerald-700 px-6 py-3 font-semibold text-white shadow-sm transition-colors hover:bg-emerald-800 active:bg-emerald-900"
+                    className="w-full sm:w-auto rounded-xl bg-emerald-700 px-6 py-3 font-semibold text-white shadow-sm transition-colors hover:bg-emerald-800 active:bg-emerald-900"
                 >
                     Save Preferences
                 </button>

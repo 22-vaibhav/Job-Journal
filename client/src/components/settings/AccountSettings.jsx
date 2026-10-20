@@ -187,7 +187,7 @@ const AccountSettings = () => {
                 <button
                     type="submit"
                     disabled={loading}
-                    className="rounded-xl bg-emerald-700 px-6 py-3 font-semibold text-white shadow-sm transition-colors hover:bg-emerald-800 active:bg-emerald-900 disabled:opacity-50"
+                    className="w-full sm:w-auto rounded-xl bg-emerald-700 px-6 py-3 font-semibold text-white shadow-sm transition-colors hover:bg-emerald-800 active:bg-emerald-900 disabled:opacity-50"
                 >
                     {loading ? "Updating..." : "Update Password"}
                 </button>

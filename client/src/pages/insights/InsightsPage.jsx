@@ -46,7 +46,7 @@ const InsightsPage = () => {
 
         return (
 
-            <div className="max-w-7xl mx-auto py-8">
+            <div className="max-w-7xl mx-auto py-6 sm:py-8">
 
                 <style>
                     {`@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap');`}
@@ -78,7 +78,7 @@ const InsightsPage = () => {
 
     return (
 
-        <div className="max-w-7xl mx-auto py-8 space-y-8">
+        <div className="max-w-7xl mx-auto py-6 sm:py-8 space-y-6 sm:space-y-8">
 
             <style>
                 {`@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap');`}

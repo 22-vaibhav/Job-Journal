@@ -71,13 +71,13 @@ const SearchPage = () => {
 
   return (
 
-    <div className="max-w-6xl mx-auto py-8">
+    <div className="max-w-6xl mx-auto py-6 sm:py-8">
 
-      <h1 className="text-3xl font-bold mb-8">
+      <h1 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">
         Search Journals
       </h1>
 
-      <div className="bg-white rounded-xl shadow p-6 space-y-6">
+      <div className="bg-white rounded-xl shadow p-4 sm:p-6 space-y-4 sm:space-y-6">
 
         <SearchBar
           keyword={keyword}

@@ -24,18 +24,20 @@ const CalendarDay = ({
             onClick={onClick}
             className={`
                 aspect-square
-                rounded-xl
+                rounded-lg
+                sm:rounded-xl
                 border
                 border-slate-200/70
                 flex
                 items-center
                 justify-center
-                text-sm
+                text-xs
+                sm:text-sm
                 font-semibold
                 transition-all
                 duration-150
                 ${colors[status]}
-                ${isToday ? " ring-4 ring-blue-600" : ""}
+                ${isToday ? " ring-2 sm:ring-4 ring-blue-600" : ""}
 
                 ${status !== "future" &&
                     status !== "empty"

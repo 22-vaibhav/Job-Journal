@@ -3,10 +3,10 @@ import Button from "../ui/Button";
 
 const JournalActions = ({ onSave, onSubmit }) => {
     return (
-        <div className="flex justify-end gap-3 pt-8 mt-2 border-t border-slate-100">
+        <div className="flex flex-col-reverse sm:flex-row sm:justify-end gap-3 pt-8 mt-2 border-t border-slate-100">
             <Button
                 variant="secondary"
-                className="flex items-center gap-2"
+                className="flex items-center justify-center gap-2 w-full sm:w-auto"
                 onClick={onSave}
             >
                 <Save size={16} />
@@ -15,7 +15,7 @@ const JournalActions = ({ onSave, onSubmit }) => {
 
             <Button
                 variant="success"
-                className="flex items-center gap-2"
+                className="flex items-center justify-center gap-2 w-full sm:w-auto"
                 onClick={onSubmit}
             >
                 <Send size={16} />

@@ -65,7 +65,7 @@ const QuickGuideModal = ({ isOpen, onClose }) => {
 
                             <p className="mt-1 text-sm text-slate-500">
                                 Everything you need to know to get the most out
-                                of ResumeLog AI.
+                                of JobJournal.
                             </p>
                         </div>
                     </div>

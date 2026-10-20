@@ -50,23 +50,16 @@ const SearchResultCard = ({ journal }) => {
             "
         >
 
-            <div className="flex justify-between items-center mb-4">
+            <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
 
-                <h3 className="text-lg font-semibold">
+                <h3 className="text-base sm:text-lg font-semibold">
 
                     {dayjs(journal.date).format("DD MMMM YYYY")}
 
                 </h3>
 
                 <span
-                    className={`
-                        px-3
-                        py-1
-                        rounded-full
-                        text-sm
-                        font-medium
-                        ${getStatusColor()}
-                    `}
+                    className={`px-3 py-1 rounded-full text-sm font-medium shrink-0 ${getStatusColor()}`}
                 >
                     {journal.status}
                 </span>
