@@ -10,30 +10,30 @@
    Dark mode swaps the variables, so every neu-* class works in both themes.
    ═══════════════════════════════════════════════════════════════════════════ */
 :root {
-    --neu-bg: #e4e9e7;        /* ground */
-    --neu-hi: #ffffff;        /* light-side shadow */
-    --neu-lo: #bfc7c4;        /* dark-side shadow */
+    --neu-bg: #d9dfdc;        /* ground (softer, less glare) */
+    --neu-hi: #eaeeec;        /* light-side shadow (not pure white) */
+    --neu-lo: #b9c1be;        /* dark-side shadow */
     --neu-text: #243430;
     --neu-muted: #4b5f59;
-    --neu-accent: #047857;
+    --neu-accent: #036249;
     --neu-accent-ink: #ffffff;
     --neu-danger: #b91c1c;
     --neu-warn: #92400e;
-    --neu-glass: rgba(255, 255, 255, 0.55);
-    --neu-glass-border: rgba(255, 255, 255, 0.7);
+    --neu-glass: rgba(236, 240, 238, 0.5);
+    --neu-glass-border: rgba(236, 240, 238, 0.6);
 }
 
 html.dark {
-    --neu-bg: #222a28;
-    --neu-hi: #2f3a37;
-    --neu-lo: #151b1a;
-    --neu-text: #e6efec;
-    --neu-muted: #a9bbb6;
-    --neu-accent: #34d399;
+    --neu-bg: #1e2523;
+    --neu-hi: #29322f;
+    --neu-lo: #131918;
+    --neu-text: #d3deda;
+    --neu-muted: #9aaca7;
+    --neu-accent: #5cc7a0;
     --neu-accent-ink: #04251b;
     --neu-danger: #f87171;
     --neu-warn: #fbbf24;
-    --neu-glass: rgba(34, 42, 40, 0.6);
+    --neu-glass: rgba(30, 37, 35, 0.6);
     --neu-glass-border: rgba(255, 255, 255, 0.08);
 }
 
@@ -186,7 +186,7 @@ body {
     html.dark h4,
     html.dark h5,
     html.dark h6 {
-        color: theme(colors.slate.50) !important;
+        color: var(--neu-text) !important;
     }
 
     /* ── Paragraphs & spans that carry no explicit text class ────────────── */
