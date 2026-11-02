@@ -181,7 +181,7 @@ const JournalPage = () => {
 
     return (
         <PageContainer>
-            <Card className="max-w-5xl mx-auto">
+            <Card className="max-w-5xl mx-auto p-6 sm:p-10">
                 <JournalHeader status={journal.status} />
                 <div className="mt-10">
                     <JournalForm

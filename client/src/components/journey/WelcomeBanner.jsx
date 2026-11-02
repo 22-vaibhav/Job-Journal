@@ -20,11 +20,7 @@ const WelcomeBanner = () => {
                 : Sunset;
 
     return (
-        <section className="relative overflow-hidden rounded-2xl border border-slate-200/70 bg-white px-6 py-7 sm:px-9 sm:py-9 shadow-[0_1px_2px_rgba(16,24,40,0.04),0_8px_24px_-8px_rgba(16,24,40,0.10)]">
-
-            <style>
-                {`@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap');`}
-            </style>
+        <section className="neu-card relative overflow-hidden px-6 py-7 sm:px-9 sm:py-9">
 
             <div
                 className="pointer-events-none absolute -right-10 -top-10 w-48 h-48 rounded-full opacity-[0.10]"
@@ -36,19 +32,18 @@ const WelcomeBanner = () => {
 
             <div className="relative space-y-2.5">
 
-                <div className="inline-flex items-center gap-2 rounded-full bg-emerald-50 text-emerald-700 px-3 py-1 text-xs font-semibold uppercase tracking-wider">
+                <div className="inline-flex items-center gap-2 neu-chip neu-accent px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em]">
                     <GreetingIcon size={14} strokeWidth={2.25} />
                     {dayjs().format("dddd, MMMM D, YYYY")}
                 </div>
 
                 <h1
-                    className="text-2xl sm:text-3xl md:text-4xl font-semibold text-slate-900 tracking-tight break-words"
-                    style={{ fontFamily: "'Fraunces', serif" }}
+                    className="font-display text-3xl sm:text-4xl font-medium tracking-tight neu-text break-words"
                 >
                     {greeting}, {user?.name} <span className="align-middle">👋</span>
                 </h1>
 
-                <p className="text-slate-500 text-base">
+                <p className="neu-muted text-base">
                     Every career has a story. Start writing today's chapter.
                 </p>
 

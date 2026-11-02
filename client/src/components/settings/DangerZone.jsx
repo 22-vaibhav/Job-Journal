@@ -61,13 +61,12 @@ const DangerZone = () => {
             <div>
 
                 <h2
-                    className="text-2xl font-semibold tracking-tight text-red-600"
-                    style={{ fontFamily: "'Fraunces', serif" }}
+                    className="font-display text-2xl font-medium tracking-tight neu-danger"
                 >
                     Danger Zone
                 </h2>
 
-                <p className="mt-2 text-slate-500">
+                <p className="mt-2 neu-muted">
                     Permanently delete your JobJournal account and all
                     associated journal data.
                 </p>
@@ -77,13 +76,13 @@ const DangerZone = () => {
 
             {/* Delete Account Card */}
 
-            <div className="max-w-2xl rounded-2xl border border-red-200 bg-red-50 p-6">
+            <div className="neu-inset max-w-2xl rounded-3xl p-6">
 
                 <div className="flex gap-4">
 
                     {/* Icon */}
 
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-red-100 text-red-600">
+                    <div className="neu-raised-sm flex h-10 w-10 shrink-0 items-center justify-center rounded-full neu-danger">
 
                         <AlertTriangle size={20} />
 
@@ -94,13 +93,13 @@ const DangerZone = () => {
 
                     <div className="flex-1">
 
-                        <h3 className="text-lg font-semibold text-red-900">
+                        <h3 className="text-lg font-semibold neu-text">
 
                             Delete Account
 
                         </h3>
 
-                        <p className="mt-2 text-sm leading-6 text-red-800">
+                        <p className="mt-2 text-sm leading-6 neu-muted">
 
                             This action is permanent. Deleting your account
                             will permanently remove your profile and all
@@ -115,7 +114,7 @@ const DangerZone = () => {
 
                             <label
                                 htmlFor="delete-confirmation"
-                                className="block text-sm font-medium text-red-900"
+                                className="block text-sm font-medium neu-text"
                             >
                                 Type <span className="font-bold">DELETE</span>{" "}
                                 to confirm.
@@ -130,26 +129,7 @@ const DangerZone = () => {
                                 }
                                 placeholder="DELETE"
                                 disabled={loading}
-                                className="
-                                    mt-2
-                                    w-full
-                                    rounded-xl
-                                    border
-                                    border-red-300
-                                    bg-white
-                                    px-4
-                                    py-3
-                                    text-sm
-                                    text-slate-900
-                                    outline-none
-                                    transition
-                                    placeholder:text-slate-400
-                                    focus:border-red-500
-                                    focus:ring-2
-                                    focus:ring-red-200
-                                    disabled:cursor-not-allowed
-                                    disabled:bg-red-50
-                                "
+                                className="neu-input mt-2 h-12 w-full px-4 py-3 text-sm transition"
                             />
 
                         </div>
@@ -164,24 +144,7 @@ const DangerZone = () => {
                                 loading ||
                                 confirmation !== "DELETE"
                             }
-                            className="
-                                mt-5
-                                inline-flex
-                                items-center
-                                gap-2
-                                rounded-xl
-                                bg-red-600
-                                px-5
-                                py-3
-                                text-sm
-                                font-semibold
-                                text-white
-                                transition
-                                hover:bg-red-700
-                                active:bg-red-800
-                                disabled:cursor-not-allowed
-                                disabled:opacity-50
-                            "
+                            className="neu-btn neu-btn-danger mt-5 inline-flex h-12 items-center gap-2 px-6 py-3 text-sm"
                         >
 
                             <Trash2 size={17} />

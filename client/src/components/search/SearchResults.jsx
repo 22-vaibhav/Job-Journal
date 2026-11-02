@@ -6,9 +6,9 @@ const SearchResults = ({ loading, journals }) => {
 
         return (
 
-            <div className="mt-8 bg-white rounded-xl shadow p-10 text-center">
+            <div className="mt-8 neu-card p-8 sm:p-10 text-center">
 
-                <p className="text-slate-500">
+                <p className="neu-muted">
                     Searching journals...
                 </p>
 
@@ -22,13 +22,13 @@ const SearchResults = ({ loading, journals }) => {
 
         return (
 
-            <div className="mt-8 bg-white rounded-xl shadow p-10 text-center">
+            <div className="mt-8 neu-card p-8 sm:p-10 text-center">
 
-                <h2 className="text-xl font-semibold text-slate-700">
+                <h2 className="font-display text-xl font-medium neu-text">
                     No Journals Found
                 </h2>
 
-                <p className="text-slate-500 mt-2">
+                <p className="neu-muted mt-2">
                     Try changing the search keyword or filters.
                 </p>
 
@@ -44,11 +44,11 @@ const SearchResults = ({ loading, journals }) => {
 
             <div className="flex items-center justify-between">
 
-                <h2 className="text-xl font-semibold">
+                <h2 className="font-display text-xl font-medium neu-text">
                     Search Results
                 </h2>
 
-                <span className="text-slate-500">
+                <span className="neu-muted">
                     {journals.length} Result{journals.length !== 1 ? "s" : ""}
                 </span>
 

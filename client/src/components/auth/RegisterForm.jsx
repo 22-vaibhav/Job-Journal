@@ -7,15 +7,13 @@ import { ROUTES } from "../../constants/routes";
 import { registerUser } from "../../services/authService";
 
 const fieldClasses =
-    "w-full border border-slate-200 rounded-xl p-3 text-sm text-slate-900 placeholder:text-slate-400 " +
-    "focus:outline-none focus:ring-2 focus:ring-emerald-700/20 focus:border-emerald-700/60 transition-colors";
+    "neu-input w-full h-12 px-4 text-sm";
 
 const SectionLabel = ({ children }) => (
     <div className="flex items-center gap-3 mb-4">
-        <span className="w-1 h-5 rounded-full bg-emerald-700" />
+        <span className="neu-inset-sm w-1.5 h-5 rounded-full" />
         <h2
-            className="text-lg font-semibold text-slate-900 tracking-tight"
-            style={{ fontFamily: "'Fraunces', serif" }}
+            className="font-display text-lg font-medium tracking-tight neu-text"
         >
             {children}
         </h2>
@@ -133,11 +131,7 @@ const RegisterForm = () => {
                 <div className="relative">
 
                     <div
-                        className="w-28 h-28 rounded-full flex items-center justify-center overflow-hidden text-white shadow-md"
-                        style={{
-                            background:
-                                "linear-gradient(135deg, #0F6B5C 0%, #1B9C87 100%)",
-                        }}
+                        className="neu-inset w-28 h-28 rounded-full flex items-center justify-center overflow-hidden neu-accent"
                     >
                         {profilePreview ? (
                             <img
@@ -152,7 +146,7 @@ const RegisterForm = () => {
 
                     <label
                         htmlFor="profileImage"
-                        className="absolute bottom-0 right-0 flex h-9 w-9 items-center justify-center rounded-full bg-white border border-slate-200 text-slate-700 shadow-md cursor-pointer transition-all duration-200 hover:scale-110 hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-200 hover:shadow-lg"
+                        className="neu-btn neu-btn-accent absolute bottom-0 right-0 flex h-11 w-11 items-center justify-center rounded-full"
                     >
                         <Camera size={16} />
                     </label>
@@ -166,8 +160,8 @@ const RegisterForm = () => {
                     />
                 </div>
 
-                <p className="mt-3 text-sm text-slate-500">
-                    Profile Picture <span className="text-slate-400">(Optional)</span>
+                <p className="mt-3 text-sm neu-muted">
+                    Profile Picture <span className="neu-muted">(Optional)</span>
                 </p>
             </div>
 
@@ -224,13 +218,12 @@ const RegisterForm = () => {
             <div>
 
                 <div className="flex items-center gap-3 mb-4">
-                    <span className="w-1 h-5 rounded-full bg-emerald-700" />
+                    <span className="neu-inset-sm w-1.5 h-5 rounded-full" />
                     <h2
-                        className="text-lg font-semibold text-slate-900 tracking-tight"
-                        style={{ fontFamily: "'Fraunces', serif" }}
+                        className="font-display text-lg font-medium tracking-tight neu-text"
                     >
                         Professional Information
-                        <span className="text-sm text-slate-400 font-normal ml-2">
+                        <span className="text-sm neu-muted font-normal ml-2">
                             (Optional)
                         </span>
                     </h2>
@@ -281,19 +274,19 @@ const RegisterForm = () => {
             <button
                 type="submit"
                 disabled={loading}
-                className="w-full flex items-center justify-center gap-2 bg-emerald-700 hover:bg-emerald-800 active:bg-emerald-900 disabled:opacity-70 disabled:cursor-not-allowed text-white rounded-xl py-3 font-semibold transition-colors"
+                className="neu-btn neu-btn-accent w-full h-12 flex items-center justify-center gap-2 rounded-2xl"
             >
                 {loading && <Loader2 size={16} className="animate-spin" />}
                 {loading ? "Creating Account..." : "Create Account"}
             </button>
 
-            <p className="text-center text-sm text-slate-600">
+            <p className="text-center text-sm neu-muted">
 
                 Already have an account?{" "}
 
                 <Link
                     to={ROUTES.LOGIN}
-                    className="text-emerald-700 font-medium hover:text-emerald-800 hover:underline"
+                    className="neu-accent font-semibold underline underline-offset-4"
                 >
                     Sign In
                 </Link>

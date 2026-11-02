@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
-import Navbar from "./Navbar";
+import Sidebar from "./Sidebar";
 
 const MainLayout = () => {
     return (
-        <div className="min-h-screen bg-slate-50">
-            <Navbar />
+        <div className="neu-ground min-h-screen lg:flex lg:items-start lg:gap-8 lg:p-7">
+            <Sidebar />
 
-            <main className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-10">
+            <main className="min-w-0 flex-1 px-4 py-6 sm:px-6 lg:px-0 lg:py-3">
                 <Outlet />
             </main>
         </div>

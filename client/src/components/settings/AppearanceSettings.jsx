@@ -9,11 +9,11 @@ const OPTIONS = [
         icon: Sun,
         preview: (
             // Mini mock of a light UI card
-            <div className="rounded-lg border border-slate-200 bg-white p-2 space-y-1.5">
-                <div className="h-2 w-2/3 rounded bg-slate-300" />
-                <div className="h-1.5 w-full rounded bg-slate-100" />
-                <div className="h-1.5 w-5/6 rounded bg-slate-100" />
-                <div className="mt-2 h-4 w-1/2 rounded bg-emerald-200" />
+            <div className="rounded-lg border border-[#e2e8f0] bg-[#ffffff] p-2 space-y-1.5">
+                <div className="h-2 w-2/3 rounded bg-[#cbd5e1]" />
+                <div className="h-1.5 w-full rounded bg-[#f1f5f9]" />
+                <div className="h-1.5 w-5/6 rounded bg-[#f1f5f9]" />
+                <div className="mt-2 h-4 w-1/2 rounded bg-[#a7f3d0]" />
             </div>
         ),
     },
@@ -38,11 +38,11 @@ const OPTIONS = [
         icon: Monitor,
         preview: (
             // Split half-light / half-dark
-            <div className="rounded-lg border border-slate-200 overflow-hidden flex h-[64px]">
-                <div className="flex-1 bg-white p-1.5 space-y-1">
-                    <div className="h-1.5 w-full rounded bg-slate-200" />
-                    <div className="h-1.5 w-4/5 rounded bg-slate-100" />
-                    <div className="h-3 w-1/2 rounded bg-emerald-200 mt-1" />
+            <div className="rounded-lg border border-[#e2e8f0] overflow-hidden flex h-[64px]">
+                <div className="flex-1 bg-[#ffffff] p-1.5 space-y-1">
+                    <div className="h-1.5 w-full rounded bg-[#e2e8f0]" />
+                    <div className="h-1.5 w-4/5 rounded bg-[#f1f5f9]" />
+                    <div className="h-3 w-1/2 rounded bg-[#a7f3d0] mt-1" />
                 </div>
                 <div className="flex-1 bg-slate-900 p-1.5 space-y-1">
                     <div className="h-1.5 w-full rounded bg-slate-600" />
@@ -62,20 +62,19 @@ const AppearanceSettings = () => {
             {/* Header */}
             <div>
                 <h2
-                    className="text-2xl font-semibold text-slate-900 tracking-tight"
-                    style={{ fontFamily: "'Fraunces', serif" }}
+                    className="font-display text-2xl font-medium neu-text tracking-tight"
                 >
                     Appearance
                 </h2>
 
-                <p className="mt-2 text-slate-500">
+                <p className="mt-2 neu-muted">
                     Choose how JobJournal looks for you. Your preference is saved locally.
                 </p>
             </div>
 
             {/* Theme options */}
             <div>
-                <p className="mb-4 text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">
+                <p className="mb-4 text-xs font-semibold uppercase tracking-[0.14em] neu-muted">
                     Theme
                 </p>
 
@@ -88,15 +87,14 @@ const AppearanceSettings = () => {
                                 key={id}
                                 type="button"
                                 onClick={() => setTheme(id)}
-                                className={`relative flex flex-col gap-3 rounded-2xl border-2 p-4 text-left transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700/40 ${
-                                    isActive
-                                        ? "border-emerald-700 bg-emerald-50/60 shadow-sm"
-                                        : "border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50"
+                                className={`neu-btn relative flex flex-col gap-3 rounded-2xl p-4 text-left ${
+                                    isActive ? "neu-pressed" : ""
                                 }`}
+                                aria-pressed={isActive}
                             >
                                 {/* Selected checkmark */}
                                 {isActive && (
-                                    <span className="absolute top-3 right-3 flex h-5 w-5 items-center justify-center rounded-full bg-emerald-700 text-white">
+                                    <span className="absolute top-3 right-3 flex h-5 w-5 items-center justify-center rounded-full bg-[var(--neu-accent)] text-[var(--neu-accent-ink)]">
                                         <Check size={11} strokeWidth={3} />
                                     </span>
                                 )}
@@ -110,22 +108,22 @@ const AppearanceSettings = () => {
                                         size={16}
                                         className={
                                             isActive
-                                                ? "text-emerald-700"
-                                                : "text-slate-400"
+                                                ? "neu-accent"
+                                                : "neu-muted"
                                         }
                                     />
                                     <span
                                         className={`text-sm font-semibold ${
                                             isActive
-                                                ? "text-emerald-700"
-                                                : "text-slate-700"
+                                                ? "neu-accent"
+                                                : "neu-text"
                                         }`}
                                     >
                                         {label}
                                     </span>
                                 </div>
 
-                                <p className="text-xs text-slate-500 leading-relaxed">
+                                <p className="text-xs neu-muted font-normal leading-relaxed">
                                     {description}
                                 </p>
                             </button>
@@ -135,9 +133,9 @@ const AppearanceSettings = () => {
             </div>
 
             {/* Current selection note */}
-            <p className="text-xs text-slate-400">
+            <p className="text-xs neu-muted">
                 Currently using:{" "}
-                <span className="font-medium text-slate-600 capitalize">{theme}</span> theme
+                <span className="font-medium neu-text capitalize">{theme}</span> theme
             </p>
         </div>
     );

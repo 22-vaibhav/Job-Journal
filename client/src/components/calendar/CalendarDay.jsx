@@ -5,30 +5,54 @@ const CalendarDay = ({
     isToday,
     onClick,
 }) => {
+    // Each status differs by surface depth AND a distinct marker shape,
+    // so it never relies on colour alone.
     const colors = {
-        completed: "bg-green-500 text-white",
+        // pressed-in well + filled dot
+        completed: "neu-inset-sm neu-text",
 
-        draft: "bg-yellow-400 text-black",
+        // raised + hollow ring
+        draft: "neu-raised-sm neu-text",
 
-        missed: "bg-red-500 text-white",
+        // dashed outline + square marker
+        missed: "neu-text border-2 border-dashed border-current",
 
-        weekend: "bg-slate-400 text-white",
+        // flat, muted + dash marker
+        weekend: "neu-muted",
 
-        future: "bg-white",
+        // faint, no marker
+        future: "neu-muted opacity-60",
 
         empty: "bg-transparent border-none cursor-default",
+    };
+
+    const labels = {
+        completed: "Completed",
+        draft: "Draft",
+        missed: "Missed",
+        weekend: "Weekend",
+        future: "Future",
+    };
+
+    const marker = {
+        completed: "w-1.5 h-1.5 rounded-full bg-current neu-accent",
+        draft: "w-1.5 h-1.5 rounded-full border-2 border-current neu-warn",
+        missed: "w-1.5 h-1.5 rotate-45 bg-current neu-danger",
+        weekend: "w-2 h-0.5 rounded-full bg-current neu-muted",
     };
 
     return (
         <div
             onClick={onClick}
+            aria-label={labels[status] ? `${day}, ${labels[status]}` : undefined}
             className={`
                 aspect-square
+                min-h-11
                 rounded-lg
-                sm:rounded-xl
-                border
-                border-slate-200/70
+                sm:rounded-2xl
                 flex
+                flex-col
+                gap-0.5
                 items-center
                 justify-center
                 text-xs
@@ -37,16 +61,19 @@ const CalendarDay = ({
                 transition-all
                 duration-150
                 ${colors[status]}
-                ${isToday ? " ring-2 sm:ring-4 ring-blue-600" : ""}
+                ${isToday ? " outline outline-2 sm:outline-[3px] outline-offset-2 outline-[var(--neu-accent)]" : ""}
 
                 ${status !== "future" &&
                     status !== "empty"
-                    ? "cursor-pointer hover:scale-105 hover:shadow-md"
+                    ? "cursor-pointer hover:scale-105"
                     : ""
                 }
             `}
         >
             {day}
+            {marker[status] && (
+                <span aria-hidden="true" className={marker[status]} />
+            )}
         </div>
     );
 };

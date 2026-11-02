@@ -46,25 +46,21 @@ const InsightsPage = () => {
 
         return (
 
-            <div className="max-w-7xl mx-auto py-6 sm:py-8">
+            <div className="w-full max-w-7xl mx-auto">
 
-                <style>
-                    {`@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap');`}
-                </style>
 
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-emerald-700">
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] neu-accent">
                     Analytics
                 </p>
 
                 <h1
-                    className="mt-1 text-3xl sm:text-4xl font-semibold text-slate-900 tracking-tight"
-                    style={{ fontFamily: "'Fraunces', serif" }}
+                    className="font-display mt-1 text-3xl sm:text-4xl font-medium tracking-tight neu-text"
                 >
                     Insights
                 </h1>
 
-                <div className="mt-10 flex flex-col items-center gap-3 text-slate-500">
-                    <div className="w-8 h-8 rounded-full border-2 border-slate-200 border-t-emerald-700 animate-spin" />
+                <div className="mt-10 flex flex-col items-center gap-3 neu-muted">
+                    <div className="w-8 h-8 rounded-full neu-inset-sm border-2 border-transparent border-t-current neu-accent animate-spin" />
                     <span className="text-sm font-medium">
                         Loading statistics...
                     </span>
@@ -78,26 +74,22 @@ const InsightsPage = () => {
 
     return (
 
-        <div className="max-w-7xl mx-auto py-6 sm:py-8 space-y-6 sm:space-y-8">
+        <div className="w-full max-w-7xl mx-auto space-y-6 sm:space-y-8">
 
-            <style>
-                {`@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap');`}
-            </style>
 
             <div>
 
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-emerald-700">
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] neu-accent">
                     Analytics
                 </p>
 
                 <h1
-                    className="mt-1 text-3xl sm:text-4xl font-semibold text-slate-900 tracking-tight"
-                    style={{ fontFamily: "'Fraunces', serif" }}
+                    className="font-display mt-1 text-3xl sm:text-4xl font-medium tracking-tight neu-text"
                 >
                     Insights
                 </h1>
 
-                <p className="text-slate-500 mt-2">
+                <p className="neu-muted mt-2">
                     Track your productivity and career growth over time.
                 </p>
 

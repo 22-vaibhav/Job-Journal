@@ -35,8 +35,8 @@ const TodayJournalCard = () => {
     if (loading) {
         return (
             <Card className="h-fit">
-                <div className="flex flex-col items-center justify-center gap-3 py-6 text-slate-500">
-                    <div className="w-6 h-6 rounded-full border-2 border-slate-200 border-t-emerald-700 animate-spin" />
+                <div className="flex flex-col items-center justify-center gap-3 py-6 neu-muted">
+                    <div className="w-6 h-6 rounded-full neu-inset-sm border-2 border-transparent border-t-current neu-accent animate-spin" />
                     <p className="text-sm font-medium">
                         Loading today's journal...
                     </p>
@@ -49,20 +49,20 @@ const TodayJournalCard = () => {
         return (
             <Card className="h-fit">
                 <div className="flex flex-col items-center justify-center gap-3 py-6 text-center">
-                    <BookOpen size={24} className="text-slate-300" />
+                    <BookOpen size={24} className="neu-muted" />
 
                     <div>
-                        <p className="text-slate-900 font-medium">
+                        <p className="neu-text font-medium">
                             Today's journal hasn't been started yet.
                         </p>
 
-                        <p className="text-slate-500 text-sm mt-1">
+                        <p className="neu-muted text-sm mt-1">
                             Start documenting your work for today.
                         </p>
                     </div>
 
                     <Button
-                        className="mt-2 w-full flex items-center justify-center gap-2"
+                        className="mt-2 w-full flex items-center justify-center gap-2 min-h-11"
                         onClick={() => {
                             navigate(ROUTES.JOURNAL, {
                                 state: {
@@ -84,36 +84,35 @@ const TodayJournalCard = () => {
     return (
         <Card className="h-fit">
             <div className="flex items-center gap-2.5">
-                <span className="flex items-center justify-center w-9 h-9 rounded-lg bg-emerald-50 text-emerald-700">
+                <span className="flex items-center justify-center w-10 h-10 rounded-xl neu-inset-sm neu-accent">
                     <BookOpen size={18} strokeWidth={2.25} />
                 </span>
                 <h2
-                    className="text-xl font-semibold text-slate-900 tracking-tight"
-                    style={{ fontFamily: "'Fraunces', serif" }}
+                    className="font-display text-xl font-medium tracking-tight neu-text"
                 >
                     Today's Journal
                 </h2>
             </div>
 
             <div className="mt-6 space-y-5">
-                <div className="flex items-center justify-between rounded-xl bg-slate-50 border border-slate-100 px-4 py-3">
-                    <div className="flex items-center gap-2 text-sm text-slate-500">
-                        <CheckCircle2 size={16} className={isCompleted ? "text-emerald-600" : "text-amber-500"} />
+                <div className="neu-inset flex items-center justify-between rounded-2xl px-4 py-3">
+                    <div className="flex items-center gap-2 text-sm neu-muted">
+                        <CheckCircle2 size={16} className={isCompleted ? "neu-accent" : "neu-warn"} />
                         Status
                     </div>
 
                     <span
-                        className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold ${isCompleted
-                            ? "bg-emerald-50 text-emerald-700"
-                            : "bg-amber-50 text-amber-700"
+                        className={`neu-chip inline-flex items-center px-3 py-1 text-xs font-semibold ${isCompleted
+                            ? "neu-accent"
+                            : "neu-warn"
                             }`}
                     >
                         {isCompleted ? "Completed" : "Draft"}
                     </span>
                 </div>
 
-                <div className="flex items-center gap-2 text-sm text-slate-500">
-                    <Clock size={16} className="text-slate-400" />
+                <div className="flex items-center gap-2 text-sm neu-muted">
+                    <Clock size={16} className="neu-muted" />
                     <span>
                         Last updated {dayjs(journal.updatedAt).format(
                             "DD MMM YYYY, hh:mm A"
@@ -121,12 +120,12 @@ const TodayJournalCard = () => {
                     </span>
                 </div>
 
-                <p className="text-slate-500 text-sm">
+                <p className="neu-muted text-sm">
                     Continue documenting today's work.
                 </p>
 
                 <Button
-                    className="w-full flex items-center justify-center gap-2"
+                    className="w-full flex items-center justify-center gap-2 min-h-11"
                     onClick={() => {
                         navigate(ROUTES.JOURNAL, {
                             state: {

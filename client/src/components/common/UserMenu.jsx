@@ -74,9 +74,9 @@ const UserMenu = () => {
             <div className="relative" ref={menuRef}>
                 <button
                     onClick={() => setOpen((prev) => !prev)}
-                    className="flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-2 py-1.5 transition hover:bg-slate-50"
+                    className="neu-link flex w-full items-center gap-3 rounded-[1.125rem] px-3.5 py-3 text-left"
                 >
-                    <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-green-500 text-sm font-semibold text-black">
+                    <div className="neu-raised-sm flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full text-[13px] font-semibold neu-accent">
                         {user?.profileImage ? (
                             <img
                                 src={user.profileImage}
@@ -88,34 +88,41 @@ const UserMenu = () => {
                         )}
                     </div>
 
+                    <span className="min-w-0 flex-1">
+                        <span className="block truncate text-sm font-semibold neu-text">
+                            {user?.name}
+                        </span>
+                        <span className="block text-xs neu-muted">Account menu</span>
+                    </span>
+
                     <ChevronDown
                         size={18}
-                        className={`transition-transform duration-200 ${open ? "rotate-180" : ""
+                        className={`shrink-0 transition-transform duration-200 ${open ? "" : "rotate-180"
                             }`}
                     />
                 </button>
 
                 {open && (
-                    <div className="absolute right-0 mt-3 w-72 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl">
+                    <div className="neu-card absolute bottom-full left-0 z-40 mb-3 w-72 max-w-[calc(100vw-2rem)] overflow-hidden rounded-3xl">
                         {/* User Info */}
-                        <div className="border-b border-slate-100 px-5 py-4">
-                            <div className="text-lg font-semibold text-slate-900">
+                        <div className="px-5 py-4">
+                            <div className="font-display text-lg font-semibold neu-text">
                                 {user?.name}
                             </div>
 
-                            <div className="text-sm text-slate-500">
+                            <div className="text-sm neu-muted">
                                 {user?.email}
                             </div>
                         </div>
 
                         {/* Menu Items */}
-                        <div className="p-2">
+                        <div className="flex flex-col gap-2 p-3 pt-0">
                             <button
                                 onClick={() => {
                                     navigate(ROUTES.PROFILE);
                                     setOpen(false);
                                 }}
-                                className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left text-slate-700 transition hover:bg-slate-100"
+                                className="neu-btn flex w-full items-center gap-3 px-4 py-3 text-left"
                             >
                                 <User size={18} />
                                 Profile
@@ -126,7 +133,7 @@ const UserMenu = () => {
                                     navigate(ROUTES.SETTINGS);
                                     setOpen(false);
                                 }}
-                                className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left text-slate-700 transition hover:bg-slate-100"
+                                className="neu-btn flex w-full items-center gap-3 px-4 py-3 text-left"
                             >
                                 <Settings size={18} />
                                 Settings
@@ -137,17 +144,17 @@ const UserMenu = () => {
                                     setOpen(false);
                                     setIsGuideOpen(true);
                                 }}
-                                className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left text-slate-700 transition hover:bg-slate-100"
+                                className="neu-btn flex w-full items-center gap-3 px-4 py-3 text-left"
                             >
                                 <BookOpen size={18} />
                                 Quick Guide
                             </button>
 
-                            <div className="my-2 border-t border-slate-200" />
+                            <div className="neu-divider my-1" />
 
                             <button
                                 onClick={handleLogout}
-                                className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left text-red-600 transition hover:bg-red-50"
+                                className="neu-btn neu-btn-danger flex w-full items-center gap-3 px-4 py-3 text-left"
                             >
                                 <LogOut size={18} />
                                 Logout

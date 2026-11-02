@@ -22,13 +22,13 @@ const SearchResultCard = ({ journal }) => {
         switch (journal.status) {
 
             case "completed":
-                return "bg-green-100 text-green-700";
+                return "neu-accent";
 
             case "draft":
-                return "bg-yellow-100 text-yellow-700";
+                return "neu-warn";
 
             default:
-                return "bg-gray-100 text-gray-700";
+                return "neu-muted";
 
         }
 
@@ -39,12 +39,10 @@ const SearchResultCard = ({ journal }) => {
         <div
             onClick={handleOpenJournal}
             className="
-                bg-white
-                rounded-xl
-                shadow
-                p-6
+                neu-card
+                p-5
+                sm:p-6
                 cursor-pointer
-                hover:shadow-lg
                 transition-all
                 duration-200
             "
@@ -52,15 +50,19 @@ const SearchResultCard = ({ journal }) => {
 
             <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
 
-                <h3 className="text-base sm:text-lg font-semibold">
+                <h3 className="font-display text-lg sm:text-xl font-medium neu-text">
 
                     {dayjs(journal.date).format("DD MMMM YYYY")}
 
                 </h3>
 
                 <span
-                    className={`px-3 py-1 rounded-full text-sm font-medium shrink-0 ${getStatusColor()}`}
+                    className={`neu-chip inline-flex items-center gap-2 px-3 py-1.5 text-sm font-semibold shrink-0 ${getStatusColor()}`}
                 >
+                    <span
+                        className="w-2 h-2 rounded-full bg-current"
+                        aria-hidden="true"
+                    />
                     {journal.status}
                 </span>
 
@@ -70,13 +72,13 @@ const SearchResultCard = ({ journal }) => {
 
                 <div>
 
-                    <p className="text-sm text-slate-500">
+                    <p className="text-sm neu-muted">
 
                         Project
 
                     </p>
 
-                    <p className="font-medium">
+                    <p className="font-medium neu-text">
 
                         {journal.projects?.length
                             ? journal.projects[0]
@@ -88,13 +90,13 @@ const SearchResultCard = ({ journal }) => {
 
                 <div>
 
-                    <p className="text-sm text-slate-500">
+                    <p className="text-sm neu-muted">
 
                         Notes
 
                     </p>
 
-                    <p className="text-slate-700 line-clamp-2">
+                    <p className="neu-text line-clamp-2">
 
                         {
                             journal.notes?.trim()
@@ -112,9 +114,11 @@ const SearchResultCard = ({ journal }) => {
 
                 <button
                     className="
-                        text-blue-600
-                        font-medium
-                        hover:text-blue-800
+                        neu-btn
+                        neu-btn-accent
+                        h-11
+                        px-5
+                        rounded-xl
                     "
                 >
                     Open Journal →

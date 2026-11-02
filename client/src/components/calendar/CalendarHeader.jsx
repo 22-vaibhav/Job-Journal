@@ -18,14 +18,13 @@ const CalendarHeader = ({
             <button
                 onClick={onPreviousMonth}
                 aria-label="Previous month"
-                className="p-2 rounded-lg text-slate-500 hover:text-emerald-700 hover:bg-emerald-50 transition-colors"
+                className="neu-btn neu-accent h-11 w-11 rounded-xl flex items-center justify-center"
             >
                 <ChevronLeft size={20} />
             </button>
 
             <h2
-                className="text-2xl font-semibold text-slate-900 tracking-tight"
-                style={{ fontFamily: "'Fraunces', serif" }}
+                className="font-display text-2xl font-semibold tracking-tight neu-text"
             >
                 {monthName} {currentYear}
             </h2>
@@ -33,7 +32,7 @@ const CalendarHeader = ({
             <button
                 onClick={onNextMonth}
                 aria-label="Next month"
-                className="p-2 rounded-lg text-slate-500 hover:text-emerald-700 hover:bg-emerald-50 transition-colors"
+                className="neu-btn neu-accent h-11 w-11 rounded-xl flex items-center justify-center"
             >
                 <ChevronRight size={20} />
             </button>

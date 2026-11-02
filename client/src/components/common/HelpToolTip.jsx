@@ -19,9 +19,9 @@ const HelpTooltip = ({
             <button
                 type="button"
                 onClick={() => setIsOpen((prev) => !prev)}
-                className="rounded-full text-gray-400 transition-colors duration-200 hover:text-blue-600 focus:outline-none focus:text-blue-600"
+                className="neu-btn neu-muted inline-flex h-11 w-11 items-center justify-center rounded-full transition-colors duration-200 hover:text-[var(--neu-accent)]"
             >
-                <CircleHelp size={18} />
+                <CircleHelp size={18} aria-hidden="true" />
             </button>
 
             {isOpen && (
@@ -29,27 +29,27 @@ const HelpTooltip = ({
                     className={`absolute left-1/2 top-full z-50 mt-3 -translate-x-1/2 ${width}`}
                 >
                     {/* Arrow */}
-                    <div className="absolute -top-2 left-1/2 h-4 w-4 -translate-x-1/2 rotate-45 border-l border-t border-gray-200 bg-white"></div>
+                    <div className="absolute -top-2 left-1/2 h-4 w-4 -translate-x-1/2 rotate-45 neu-ground"></div>
 
                     {/* Card */}
-                    <div className="relative rounded-xl border border-gray-200 bg-white p-4 shadow-2xl">
-                        <h3 className="mb-2 text-base font-semibold text-gray-900">
+                    <div className="relative neu-raised-lg rounded-2xl p-4 neu-text">
+                        <h3 className="font-display mb-2 text-base font-medium neu-text">
                             {title}
                         </h3>
 
                         {description && (
-                            <p className="mb-4 text-sm leading-6 text-gray-600">
+                            <p className="mb-4 text-sm leading-6 neu-muted">
                                 {description}
                             </p>
                         )}
 
                         {examples.length > 0 && (
                             <div className="mb-4">
-                                <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider text-blue-600">
+                                <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider neu-accent">
                                     Examples
                                 </h4>
 
-                                <ul className="space-y-1 text-sm text-gray-700">
+                                <ul className="space-y-1 text-sm neu-text">
                                     {examples.map((example, index) => (
                                         <li key={index}>• {example}</li>
                                     ))}
@@ -59,11 +59,11 @@ const HelpTooltip = ({
 
                         {tips.length > 0 && (
                             <div>
-                                <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider text-green-600">
+                                <h4 className="mb-2 text-xs font-semibold uppercase tracking-wider neu-accent">
                                     Tips
                                 </h4>
 
-                                <ul className="space-y-1 text-sm text-gray-700">
+                                <ul className="space-y-1 text-sm neu-text">
                                     {tips.map((tip, index) => (
                                         <li key={index}>✓ {tip}</li>
                                     ))}

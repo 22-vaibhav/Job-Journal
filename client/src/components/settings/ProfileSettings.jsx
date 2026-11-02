@@ -7,11 +7,10 @@ import {
 } from "../../services/settingsService";
 
 const fieldClasses =
-    "w-full rounded-xl border border-slate-200 px-4 py-3 text-slate-900 placeholder:text-slate-400 " +
-    "focus:outline-none focus:ring-2 focus:ring-emerald-700/20 focus:border-emerald-700/60 transition-colors";
+    "neu-input w-full h-12 px-4 py-3 transition-colors";
 
 const FieldLabel = ({ children }) => (
-    <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-slate-400">
+    <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.08em] neu-muted">
         {children}
     </label>
 );
@@ -88,8 +87,8 @@ const ProfileSettings = () => {
 
     if (loading) {
         return (
-            <div className="flex flex-col items-center justify-center gap-3 py-10 text-slate-500">
-                <div className="w-6 h-6 rounded-full border-2 border-slate-200 border-t-emerald-700 animate-spin" />
+            <div className="flex flex-col items-center justify-center gap-3 py-10 neu-muted">
+                <div className="neu-inset-sm w-7 h-7 rounded-full border-2 border-transparent animate-spin" style={{ borderTopColor: "var(--neu-accent)" }} />
                 <p className="text-sm font-medium">Loading profile...</p>
             </div>
         );
@@ -99,13 +98,12 @@ const ProfileSettings = () => {
         <div>
             <div className="mb-6">
                 <h2
-                    className="text-2xl font-semibold text-slate-900 tracking-tight"
-                    style={{ fontFamily: "'Fraunces', serif" }}
+                    className="font-display text-2xl font-medium neu-text tracking-tight"
                 >
                     Profile
                 </h2>
 
-                <p className="mt-2 text-slate-500">
+                <p className="mt-2 neu-muted">
                     Update your personal and professional details.
                 </p>
             </div>
@@ -130,7 +128,7 @@ const ProfileSettings = () => {
                         type="email"
                         value={formData.email}
                         disabled
-                        className="w-full cursor-not-allowed rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-500"
+                        className="neu-input w-full h-12 cursor-not-allowed px-4 py-3 neu-muted"
                     />
                 </div>
 
@@ -181,7 +179,7 @@ const ProfileSettings = () => {
                         name="careerGoal"
                         value={formData.careerGoal}
                         onChange={handleChange}
-                        className={`${fieldClasses} resize-none`}
+                        className={`${fieldClasses} h-auto resize-none`}
                     />
                 </div>
 
@@ -189,7 +187,7 @@ const ProfileSettings = () => {
                     <button
                         type="submit"
                         disabled={saving}
-                        className="w-full sm:w-auto rounded-xl bg-emerald-700 px-6 py-3 font-semibold text-white shadow-sm transition-colors hover:bg-emerald-800 active:bg-emerald-900 disabled:cursor-not-allowed disabled:opacity-50"
+                        className="neu-btn neu-btn-accent h-12 w-full sm:w-auto px-8 py-3"
                     >
                         {saving ? "Saving..." : "Save Changes"}
                     </button>

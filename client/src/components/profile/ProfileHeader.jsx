@@ -55,52 +55,23 @@ const ProfileHeader = ({ user, onProfileImageUpdate }) => {
     };
 
     return (
-        <div className="relative overflow-hidden rounded-2xl border border-slate-200/70 bg-white shadow-[0_1px_2px_rgba(16,24,40,0.04),0_8px_24px_-8px_rgba(16,24,40,0.10)]">
+        <div className="relative neu-card p-6 sm:p-9">
 
-            {/* Banner */}
-            <div
-                className="relative h-24 sm:h-28"
-                style={{
-                    background:
-                        "linear-gradient(120deg, #0F6B5C 0%, #11806E 45%, #1B9C87 100%)",
-                }}
-            >
-                <div
-                    className="h-full w-full opacity-[0.16]"
-                    style={{
-                        backgroundImage:
-                            "radial-gradient(circle at 15% 25%, #ffffff 0, transparent 35%), radial-gradient(circle at 85% 20%, #ffffff 0, transparent 30%), radial-gradient(circle at 60% 80%, #ffffff 0, transparent 40%)",
-                    }}
-                />
-                {/* Dot-grid texture */}
-                <div
-                    className="absolute inset-0 opacity-[0.12]"
-                    style={{
-                        backgroundImage: "radial-gradient(circle, #ffffff 1px, transparent 1px)",
-                        backgroundSize: "16px 16px",
-                    }}
-                />
-            </div>
+            <div>
 
-            <div className="px-6 sm:px-10 pb-8 sm:pb-10">
-
-                <div className="flex flex-col sm:flex-row sm:items-end gap-5">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-6">
 
                     {/* Avatar */}
                     {/* Avatar */}
-                    <div className="shrink-0 mx-auto sm:mx-0 -mt-14 sm:-mt-16">
+                    <div className="shrink-0 mx-auto sm:mx-0">
                         <div className="relative">
 
                             {/* Avatar */}
                             <div
-                                className="rounded-full p-1.5 bg-white shadow-[0_8px_20px_-6px_rgba(16,24,40,0.25)]"
+                                className="rounded-full p-2 neu-raised"
                             >
                                 <div
-                                    className="w-28 h-28 sm:w-32 sm:h-32 rounded-full flex items-center justify-center text-white relative overflow-hidden"
-                                    style={{
-                                        background:
-                                            "linear-gradient(135deg, #0F6B5C 0%, #1B9C87 100%)",
-                                    }}
+                                    className="w-28 h-28 sm:w-32 sm:h-32 rounded-full flex items-center justify-center neu-inset neu-accent relative overflow-hidden"
                                 >
                                     {user?.profileImage ? (
                                         <img
@@ -110,19 +81,8 @@ const ProfileHeader = ({ user, onProfileImageUpdate }) => {
                                         />
                                     ) : (
                                         <>
-                                            <div
-                                                className="absolute inset-0 opacity-20"
-                                                style={{
-                                                    backgroundImage:
-                                                        "radial-gradient(circle at 30% 20%, #ffffff 0, transparent 45%)",
-                                                }}
-                                            />
-
                                             <span
-                                                className="relative text-3xl sm:text-4xl font-semibold tracking-wide"
-                                                style={{
-                                                    fontFamily: "'Fraunces', serif",
-                                                }}
+                                                className="font-display relative text-3xl sm:text-4xl font-semibold tracking-wide"
                                             >
                                                 {initials}
                                             </span>
@@ -142,7 +102,7 @@ const ProfileHeader = ({ user, onProfileImageUpdate }) => {
                                 type="button"
                                 onClick={() => fileInputRef.current?.click()}
                                 disabled={uploading}
-                                className="absolute bottom-1 right-1 flex h-9 w-9 items-center justify-center rounded-full bg-white border border-slate-200 text-slate-700 shadow-md transition-all duration-200 hover:scale-110 hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-200 hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-60"
+                                className="neu-btn neu-btn-accent absolute -bottom-1 -right-1 flex h-11 w-11 items-center justify-center rounded-full"
                                 aria-label="Change profile picture"
                             >
                                 <Pencil size={16} />
@@ -160,16 +120,15 @@ const ProfileHeader = ({ user, onProfileImageUpdate }) => {
                         </div>
                     </div>
 
-                    {/* Identity block — always sits on the white area, never overlaps the banner */}
-                    <div className="flex-1 min-w-0 text-center sm:text-left pt-3 sm:pt-0 sm:pb-1.5">
+                    {/* Identity block */}
+                    <div className="flex-1 min-w-0 text-center sm:text-left pt-3 sm:pt-0">
                         <h2
-                            className="text-2xl sm:text-3xl font-semibold text-slate-900 tracking-tight"
-                            style={{ fontFamily: "'Fraunces', serif" }}
+                            className="font-display text-3xl sm:text-4xl font-medium neu-text tracking-tight"
                         >
                             {user.name}
                         </h2>
 
-                        <p className="mt-1 text-base font-medium text-slate-600">
+                        <p className="mt-1 text-base font-medium neu-muted">
                             {user.currentRole || "Professional"}
                         </p>
                     </div>
@@ -178,9 +137,9 @@ const ProfileHeader = ({ user, onProfileImageUpdate }) => {
 
                 {/* Meta row */}
                 <div className="mt-6 flex flex-wrap items-center justify-center sm:justify-start gap-3">
-                    <div className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 border border-emerald-100 px-3.5 py-1.5 text-sm font-medium text-emerald-800">
+                    <div className="neu-chip inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium neu-accent">
                         <svg
-                            className="w-3.5 h-3.5 text-emerald-700"
+                            className="w-3.5 h-3.5 neu-accent"
                             viewBox="0 0 24 24"
                             fill="none"
                             stroke="currentColor"
@@ -192,9 +151,9 @@ const ProfileHeader = ({ user, onProfileImageUpdate }) => {
                     </div>
 
                     {user.experience ? (
-                        <div className="inline-flex items-center gap-1.5 rounded-full bg-slate-50 border border-slate-200 px-3.5 py-1.5 text-sm font-medium text-slate-600">
+                        <div className="neu-chip inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium neu-muted">
                             <svg
-                                className="w-3.5 h-3.5 text-slate-400"
+                                className="w-3.5 h-3.5 neu-muted"
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"

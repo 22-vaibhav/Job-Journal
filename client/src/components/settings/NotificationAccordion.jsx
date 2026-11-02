@@ -7,14 +7,14 @@ const NotificationAccordion = ({
     children,
 }) => {
     return (
-        <div className="mb-4 overflow-hidden rounded-xl border border-gray-200 bg-white">
+        <div className="neu-raised mb-5 overflow-hidden rounded-2xl">
 
             <button
                 type="button"
                 onClick={onToggle}
-                className="flex w-full items-center justify-between px-5 py-4 transition hover:bg-gray-50"
+                className="neu-link flex min-h-12 w-full items-center justify-between rounded-2xl px-5 py-4"
             >
-                <h3 className="text-base font-semibold text-gray-800">
+                <h3 className="text-base font-semibold neu-text">
                     {title}
                 </h3>
 
@@ -29,7 +29,7 @@ const NotificationAccordion = ({
                 className={`overflow-hidden transition-all duration-300 ${isOpen ? "max-h-96" : "max-h-0"
                     }`}
             >
-                <div className="border-t border-gray-100 px-5 py-5">
+                <div className="px-5 pb-5 pt-2">
                     {children}
                 </div>
             </div>

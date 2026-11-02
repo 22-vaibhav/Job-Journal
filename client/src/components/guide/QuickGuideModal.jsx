@@ -28,19 +28,16 @@ const QuickGuideModal = ({ isOpen, onClose }) => {
 
     return createPortal(
         <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 backdrop-blur-sm p-4"
+            className="fixed inset-0 z-50 flex items-center justify-center neu-overlay p-4"
             onClick={onClose}
         >
-            <style>
-                {`@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap');`}
-            </style>
 
             <div
-                className="relative w-full max-w-5xl max-h-[90vh] overflow-hidden rounded-3xl bg-slate-50 border border-slate-200/70 shadow-2xl"
+                className="neu-card relative w-full max-w-5xl max-h-[90vh] overflow-hidden"
                 onClick={(e) => e.stopPropagation()}
             >
                 {/* Header */}
-                <div className="sticky top-0 z-10 flex items-center justify-between border-b border-slate-200 bg-white/95 backdrop-blur px-6 sm:px-8 py-6">
+                <div className="sticky top-0 z-10 flex items-center justify-between gap-3 px-6 sm:px-8 py-6">
                     <div className="flex items-center gap-4">
                         {/* <span
                             className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-white"
@@ -51,19 +48,18 @@ const QuickGuideModal = ({ isOpen, onClose }) => {
                         >
                             <BookOpen size={22} />
                         </span> */}
-                        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl overflow-hidden bg-white border border-slate-200">
+                        <span className="neu-inset-sm flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl overflow-hidden">
                             <img src="../../../public/journal.png" alt="JobJournal logo" className="h-full w-full object-contain p-1.5" />
                         </span>
 
                         <div>
                             <h1
-                                className="text-2xl font-semibold text-slate-900 tracking-tight"
-                                style={{ fontFamily: "'Fraunces', serif" }}
+                                className="font-display text-2xl font-medium tracking-tight neu-text"
                             >
                                 JobJournal Guide
                             </h1>
 
-                            <p className="mt-1 text-sm text-slate-500">
+                            <p className="mt-1 text-sm neu-muted">
                                 Everything you need to know to get the most out
                                 of JobJournal.
                             </p>
@@ -73,7 +69,7 @@ const QuickGuideModal = ({ isOpen, onClose }) => {
                     <button
                         onClick={onClose}
                         aria-label="Close guide"
-                        className="rounded-xl p-2 text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-900"
+                        className="neu-btn flex h-11 w-11 shrink-0 items-center justify-center rounded-xl neu-muted"
                     >
                         <X size={22} />
                     </button>

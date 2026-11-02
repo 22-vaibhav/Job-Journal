@@ -5,33 +5,28 @@ const CompletionCard = ({ stats }) => {
     return (
         <div
             className="
-                bg-white
-                rounded-2xl
-                border
-                border-slate-200/70
-                shadow-[0_1px_2px_rgba(16,24,40,0.04),0_8px_24px_-8px_rgba(16,24,40,0.10)]
+                neu-card
                 p-6
                 sm:p-8
             "
         >
 
             <div className="flex items-center gap-3.5">
-                <div className="bg-green-100 p-3 rounded-xl">
+                <div className="neu-inset-sm p-3 rounded-xl">
                     <CheckCircle2
                         size={24}
-                        className="text-green-600"
+                        className="neu-accent"
                     />
                 </div>
 
                 <div>
                     <h2
-                        className="text-xl font-semibold text-slate-900 tracking-tight"
-                        style={{ fontFamily: "'Fraunces', serif" }}
+                        className="font-display text-xl font-medium neu-text tracking-tight"
                     >
                         Journal Completion
                     </h2>
 
-                    <p className="text-slate-500 text-sm">
+                    <p className="neu-muted text-sm">
                         Your overall journaling progress
                     </p>
                 </div>
@@ -39,18 +34,18 @@ const CompletionCard = ({ stats }) => {
 
             <div className="mt-8">
                 <div className="flex justify-between mb-2">
-                    <span className="font-medium text-sm text-slate-600">
+                    <span className="font-medium text-sm neu-muted">
                         Completion Rate
                     </span>
 
-                    <span className="font-semibold text-green-600">
+                    <span className="font-semibold neu-accent">
                         {stats.completionRate}%
                     </span>
                 </div>
 
-                <div className="w-full h-4 rounded-full bg-slate-100 overflow-hidden">
+                <div className="w-full h-5 p-1 rounded-full neu-inset-sm">
                     <div
-                        className="bg-green-500 h-4 rounded-full transition-all duration-500"
+                        className="bg-[var(--neu-accent)] h-3 rounded-full transition-all duration-500"
                         style={{
                             width: `${stats.completionRate}%`,
                         }}
@@ -59,45 +54,43 @@ const CompletionCard = ({ stats }) => {
             </div>
 
             <div className="grid grid-cols-2 gap-6 mt-8">
-                <div className="text-center rounded-xl bg-slate-50 border border-slate-100 py-5">
+                <div className="text-center rounded-2xl neu-inset py-5">
                     <h3
-                        className="text-3xl font-semibold text-green-600"
-                        style={{ fontFamily: "'Fraunces', serif" }}
+                        className="font-display text-3xl font-medium neu-accent"
                     >
                         {stats.completed}
                     </h3>
 
-                    <p className="text-slate-500 mt-1 text-sm">
+                    <p className="neu-muted mt-1 text-sm">
                         Completed Journals
                     </p>
                 </div>
 
-                <div className="text-center rounded-xl bg-slate-50 border border-slate-100 py-5">
+                <div className="text-center rounded-2xl neu-inset py-5">
                     <h3
-                        className="text-3xl font-semibold text-yellow-500"
-                        style={{ fontFamily: "'Fraunces', serif" }}
+                        className="font-display text-3xl font-medium neu-warn"
                     >
                         {stats.drafts}
                     </h3>
 
-                    <p className="text-slate-500 mt-1 text-sm">
+                    <p className="neu-muted mt-1 text-sm">
                         Draft Journals
                     </p>
                 </div>
             </div>
 
-            <div className="mt-8 text-center text-slate-500 text-sm">
+            <div className="mt-8 text-center neu-muted text-sm">
 
                 You have completed
 
-                <span className="font-semibold text-slate-700">
+                <span className="font-semibold neu-text">
                     {" "}
                     {stats.completed}
                 </span>
 
                 {" "}out of{" "}
 
-                <span className="font-semibold text-slate-700">
+                <span className="font-semibold neu-text">
                     {stats.totalJournals}
                 </span>
 

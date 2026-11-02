@@ -6,7 +6,7 @@ const Calendar = () => {
         <Card>
             <CalendarHeader />
 
-            <div className="h-96 flex items-center justify-center text-slate-400">
+            <div className="h-96 flex items-center justify-center neu-muted">
                 Calendar Grid Coming Soon...
             </div>
         </Card>

@@ -54,27 +54,23 @@ const LoginForm = () => {
     };
 
     return (
-        <Card className="w-full max-w-md p-8 sm:p-10">
+        <Card className="neu-glass w-full max-w-md p-6 sm:p-10">
 
             <div className="text-center">
 
                 <span
-                    className="inline-flex items-center justify-center w-11 h-11 rounded-xl text-white text-lg font-bold mb-4"
-                    style={{
-                        background: "linear-gradient(135deg, #0F6B5C 0%, #1B9C87 100%)",
-                    }}
+                    className="neu-raised inline-flex items-center justify-center w-14 h-14 rounded-[1.1rem] neu-accent font-display text-2xl font-semibold mb-4"
                 >
                     J
                 </span>
 
                 <h1
-                    className="text-3xl font-semibold text-slate-900 tracking-tight"
-                    style={{ fontFamily: "'Fraunces', serif" }}
+                    className="font-display text-3xl sm:text-4xl font-medium tracking-tight neu-text"
                 >
                     JobJournal
                 </h1>
 
-                <p className="text-slate-500 mt-2 text-sm">
+                <p className="neu-muted mt-2 text-sm">
                     Your Professional Journey,
                     One Day at a Time
                 </p>
@@ -108,17 +104,17 @@ const LoginForm = () => {
                 <Button
                     type="submit"
                     loading={loading}
-                    className="w-full"
+                    className="w-full h-12"
                 >
                     Login
                 </Button>
             </form>
 
-            <p className="mt-6 text-center text-sm text-slate-600">
+            <p className="mt-6 text-center text-sm neu-muted">
                 Don't have an account?{" "}
                 <Link
                     to={ROUTES.REGISTER}
-                    className="text-emerald-700 font-medium hover:text-emerald-800 hover:underline"
+                    className="neu-accent font-semibold underline underline-offset-4"
                 >
                     Register
                 </Link>

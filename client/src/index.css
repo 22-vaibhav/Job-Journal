@@ -1,7 +1,171 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap");
 @import "tailwindcss";
 
 /* ─── Dark-mode: class strategy ────────────────────────────────────────────── */
 @variant dark (&:where(.dark, .dark *));
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   NEUMORPHIC DESIGN TOKENS
+   One ground colour; depth comes only from a light + dark shadow pair.
+   Dark mode swaps the variables, so every neu-* class works in both themes.
+   ═══════════════════════════════════════════════════════════════════════════ */
+:root {
+    --neu-bg: #e4e9e7;        /* ground */
+    --neu-hi: #ffffff;        /* light-side shadow */
+    --neu-lo: #bfc7c4;        /* dark-side shadow */
+    --neu-text: #243430;
+    --neu-muted: #4b5f59;
+    --neu-accent: #047857;
+    --neu-accent-ink: #ffffff;
+    --neu-danger: #b91c1c;
+    --neu-warn: #92400e;
+    --neu-glass: rgba(255, 255, 255, 0.55);
+    --neu-glass-border: rgba(255, 255, 255, 0.7);
+}
+
+html.dark {
+    --neu-bg: #222a28;
+    --neu-hi: #2f3a37;
+    --neu-lo: #151b1a;
+    --neu-text: #e6efec;
+    --neu-muted: #a9bbb6;
+    --neu-accent: #34d399;
+    --neu-accent-ink: #04251b;
+    --neu-danger: #f87171;
+    --neu-warn: #fbbf24;
+    --neu-glass: rgba(34, 42, 40, 0.6);
+    --neu-glass-border: rgba(255, 255, 255, 0.08);
+}
+
+body {
+    background-color: var(--neu-bg);
+    color: var(--neu-text);
+    font-family: "DM Sans", system-ui, sans-serif;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   NEUMORPHIC COMPONENT CLASSES  (use these instead of bg-white / border / shadow-sm)
+   Class names deliberately avoid the "shadow-" substring so the legacy dark
+   rule `[class*="shadow-"]` below never touches them.
+   ═══════════════════════════════════════════════════════════════════════════ */
+@layer components {
+    .font-display { font-family: "Plus Jakarta Sans", "DM Sans", system-ui, sans-serif; letter-spacing: -0.01em; }
+
+    /* Text */
+    .neu-text   { color: var(--neu-text); }
+    .neu-muted  { color: var(--neu-muted); }
+    .neu-accent { color: var(--neu-accent); }
+    .neu-danger { color: var(--neu-danger); }
+    .neu-warn   { color: var(--neu-warn); }
+
+    /* Surfaces */
+    .neu-ground { background: var(--neu-bg); color: var(--neu-text); }
+    .neu-raised-sm { background: var(--neu-bg); box-shadow: 4px 4px 8px var(--neu-lo), -4px -4px 8px var(--neu-hi); }
+    .neu-raised    { background: var(--neu-bg); box-shadow: 7px 7px 14px var(--neu-lo), -7px -7px 14px var(--neu-hi); }
+    .neu-raised-lg { background: var(--neu-bg); box-shadow: 12px 12px 24px var(--neu-lo), -12px -12px 24px var(--neu-hi); }
+    .neu-inset-sm  { background: var(--neu-bg); box-shadow: inset 3px 3px 6px var(--neu-lo), inset -3px -3px 6px var(--neu-hi); }
+    .neu-inset     { background: var(--neu-bg); box-shadow: inset 5px 5px 10px var(--neu-lo), inset -5px -5px 10px var(--neu-hi); }
+
+    /* Card: a raised panel */
+    .neu-card {
+        background: var(--neu-bg);
+        color: var(--neu-text);
+        border-radius: 1.75rem;
+        box-shadow: 10px 10px 20px var(--neu-lo), -10px -10px 20px var(--neu-hi);
+    }
+
+    /* Button: raised, presses in on :active; selected state = .neu-pressed */
+    .neu-btn {
+        background: var(--neu-bg);
+        color: var(--neu-text);
+        border: 0;
+        border-radius: 1rem;
+        box-shadow: 6px 6px 12px var(--neu-lo), -6px -6px 12px var(--neu-hi);
+        font-weight: 600;
+        cursor: pointer;
+        transition: box-shadow 150ms ease, color 150ms ease;
+    }
+    .neu-btn:hover:not(:disabled) { box-shadow: 4px 4px 8px var(--neu-lo), -4px -4px 8px var(--neu-hi); }
+    .neu-btn:active:not(:disabled),
+    .neu-btn.neu-pressed {
+        box-shadow: inset 4px 4px 8px var(--neu-lo), inset -4px -4px 8px var(--neu-hi);
+    }
+    .neu-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .neu-btn-accent { color: var(--neu-accent); }
+    .neu-btn-danger { color: var(--neu-danger); }
+
+    /* Form fields: inset */
+    .neu-input {
+        background: var(--neu-bg);
+        color: var(--neu-text);
+        border: 0;
+        border-radius: 0.875rem;
+        box-shadow: inset 4px 4px 8px var(--neu-lo), inset -4px -4px 8px var(--neu-hi);
+        outline: none;
+    }
+    .neu-input::placeholder { color: var(--neu-muted); opacity: 0.75; }
+    .neu-input:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    /* Focus ring shared by every interactive neu element (keyboard users) */
+    .neu-btn:focus-visible,
+    .neu-input:focus-visible,
+    .neu-link:focus-visible {
+        outline: 2px solid var(--neu-accent);
+        outline-offset: 3px;
+    }
+
+    /* Sidebar / tab links: raised, selected = inset + accent */
+    .neu-link {
+        background: var(--neu-bg);
+        color: var(--neu-text);
+        border-radius: 1rem;
+        box-shadow: 5px 5px 10px var(--neu-lo), -5px -5px 10px var(--neu-hi);
+        font-weight: 500;
+        transition: box-shadow 150ms ease, color 150ms ease;
+    }
+    .neu-link:hover { box-shadow: 3px 3px 6px var(--neu-lo), -3px -3px 6px var(--neu-hi); }
+    .neu-link.neu-active,
+    .neu-link[aria-current="page"] {
+        color: var(--neu-accent);
+        font-weight: 600;
+        box-shadow: inset 5px 5px 10px var(--neu-lo), inset -5px -5px 10px var(--neu-hi);
+    }
+
+    /* Small badge / chip: inset */
+    .neu-chip {
+        background: var(--neu-bg);
+        color: var(--neu-text);
+        border-radius: 999px;
+        box-shadow: inset 2px 2px 4px var(--neu-lo), inset -2px -2px 4px var(--neu-hi);
+    }
+
+    /* Thin groove divider */
+    .neu-divider {
+        height: 2px;
+        border-radius: 2px;
+        background: var(--neu-bg);
+        box-shadow: inset 1px 1px 2px var(--neu-lo), inset -1px -1px 2px var(--neu-hi);
+    }
+
+    /* Glass (login / register cards) */
+    .neu-glass {
+        background: var(--neu-glass);
+        border: 1px solid var(--neu-glass-border);
+        border-radius: 2rem;
+        backdrop-filter: blur(20px) saturate(160%);
+        -webkit-backdrop-filter: blur(20px) saturate(160%);
+        box-shadow: 0 20px 50px rgba(36, 52, 48, 0.15);
+    }
+    .neu-glass-backdrop {
+        background:
+            radial-gradient(60rem 30rem at 15% 10%, rgba(4, 120, 87, 0.22), transparent 60%),
+            radial-gradient(50rem 30rem at 90% 90%, rgba(180, 83, 9, 0.16), transparent 60%),
+            var(--neu-bg);
+    }
+
+    /* Modal overlay */
+    .neu-overlay { background: rgba(20, 28, 26, 0.55); backdrop-filter: blur(4px); }
+}
 
 /* ═══════════════════════════════════════════════════════════════════════════
    DARK MODE — comprehensive overrides
@@ -11,10 +175,7 @@
 @layer base {
 
     /* ── Body background & default text ───────────────────────────────────── */
-    html.dark body {
-        background-color: theme(colors.slate.950);
-        color: theme(colors.slate.100);
-    }
+    /* (body colours now come from --neu-bg / --neu-text above) */
 
     /* ── Headings: class-based AND inline-style ones ─────────────────────── */
     /* Inline style={{ fontFamily: ... }} elements don't carry a color,
@@ -84,34 +245,7 @@
     html.dark .text-gray-500  { color: theme(colors.slate.400) !important; }
     html.dark .text-gray-400  { color: theme(colors.slate.500) !important; }
 
-    /* ══════════════════════════════════════════════
-       INPUTS, TEXTAREAS, SELECTS
-       ══════════════════════════════════════════════ */
-
-    html.dark input:not([type="checkbox"]):not([type="radio"]),
-    html.dark textarea,
-    html.dark select {
-        background-color: theme(colors.slate.800) !important;
-        border-color:     theme(colors.slate.600) !important;
-        color:            theme(colors.slate.100) !important;
-    }
-
-    html.dark input:disabled,
-    html.dark textarea:disabled {
-        background-color: theme(colors.slate.900) !important;
-        color:            theme(colors.slate.500) !important;
-    }
-
-    html.dark input::placeholder,
-    html.dark textarea::placeholder {
-        color: theme(colors.slate.500) !important;
-    }
-
-    /* Cursor-not-allowed readonly fields */
-    html.dark .cursor-not-allowed {
-        background-color: theme(colors.slate.900) !important;
-        color:            theme(colors.slate.500) !important;
-    }
+    /* Inputs are styled by .neu-input (works in both themes) */
 
     /* ══════════════════════════════════════════════
        HOVER STATES that flip bg to a light colour

@@ -71,8 +71,8 @@ const NotificationSettings = () => {
 
     if (loading) {
         return (
-            <div className="flex flex-col items-center justify-center gap-3 py-10 text-slate-500">
-                <div className="w-6 h-6 rounded-full border-2 border-slate-200 border-t-emerald-700 animate-spin" />
+            <div className="flex flex-col items-center justify-center gap-3 py-10 neu-muted">
+                <div className="neu-inset-sm w-7 h-7 rounded-full border-2 border-transparent animate-spin" style={{ borderTopColor: "var(--neu-accent)" }} />
                 <p className="text-sm font-medium">Loading...</p>
             </div>
         );
@@ -100,29 +100,28 @@ const NotificationSettings = () => {
         <div className="space-y-6">
             <div>
                 <h2
-                    className="text-2xl font-semibold text-slate-900 tracking-tight"
-                    style={{ fontFamily: "'Fraunces', serif" }}
+                    className="font-display text-2xl font-medium neu-text tracking-tight"
                 >
                     Notifications
                 </h2>
 
-                <p className="mt-2 text-slate-500">
+                <p className="mt-2 neu-muted">
                     Choose which emails Job Journal should send you.
                 </p>
             </div>
 
-            <div className="space-y-3">
+            <div className="space-y-5">
                 {options.map((option) => (
                     <div
                         key={option.key}
-                        className="flex items-center justify-between gap-4 rounded-xl border border-slate-200 bg-slate-50/60 p-5"
+                        className="neu-raised flex items-center justify-between gap-4 rounded-2xl p-5"
                     >
                         <div>
-                            <h3 className="font-medium text-slate-800">
+                            <h3 className="text-[17px] font-semibold neu-text">
                                 {option.title}
                             </h3>
 
-                            <p className="mt-1 text-sm text-slate-500">
+                            <p className="mt-1 text-sm neu-muted">
                                 {option.description}
                             </p>
                         </div>
@@ -135,9 +134,9 @@ const NotificationSettings = () => {
                                 onChange={() => handleToggle(option.key)}
                             />
 
-                            <div className="h-6 w-11 rounded-full bg-slate-300 transition peer-checked:bg-emerald-700"></div>
+                            <div className="neu-inset h-8 w-14 rounded-full transition peer-checked:bg-[var(--neu-accent)] peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--neu-accent)]"></div>
 
-                            <div className="absolute left-1 top-1 h-4 w-4 rounded-full bg-white transition peer-checked:translate-x-5"></div>
+                            <div className="neu-raised-sm absolute left-1 top-1 h-6 w-6 rounded-full transition peer-checked:translate-x-6"></div>
                         </label>
                     </div>
                 ))}
@@ -146,7 +145,7 @@ const NotificationSettings = () => {
             <div className="flex justify-end pt-2">
                 <button
                     onClick={handleSave}
-                    className="w-full sm:w-auto rounded-xl bg-emerald-700 px-6 py-3 font-semibold text-white shadow-sm transition-colors hover:bg-emerald-800 active:bg-emerald-900"
+                    className="neu-btn neu-btn-accent h-12 w-full sm:w-auto px-8 py-3"
                 >
                     Save Preferences
                 </button>

@@ -8,15 +8,11 @@ const JournalHeader = ({ status = "Draft" }) => {
     const isCompleted = status.toLowerCase() === "completed";
 
     return (
-        <div className="border-b border-slate-200 pb-7">
-
-            <style>
-                {`@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap');`}
-            </style>
+        <div className="pb-2">
 
             <button
                 onClick={() => navigate(ROUTES.JOURNEY)}
-                className="flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-emerald-700 transition-colors mb-6"
+                className="neu-btn inline-flex items-center gap-2 px-4 min-h-11 text-sm neu-muted mb-8"
             >
                 <ArrowLeft size={18} />
                 Back to My Journey
@@ -24,17 +20,16 @@ const JournalHeader = ({ status = "Draft" }) => {
 
             <div className="flex items-start justify-between flex-wrap gap-4">
                 <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.14em] text-emerald-700">
+                    <p className="text-xs font-semibold uppercase tracking-[0.14em] neu-accent">
                         Daily Log
                     </p>
                     <h1
-                        className="mt-1 text-3xl sm:text-4xl font-semibold text-slate-900 tracking-tight"
-                        style={{ fontFamily: "'Fraunces', serif" }}
+                        className="mt-1 font-display text-3xl sm:text-4xl font-medium tracking-tight neu-text"
                     >
                         Today's Journal
                     </h1>
 
-                    <p className="text-slate-500 mt-2 text-sm">
+                    <p className="neu-muted mt-2 text-sm">
                         {new Date().toLocaleDateString("en-IN", {
                             weekday: "long",
                             day: "numeric",
@@ -45,9 +40,9 @@ const JournalHeader = ({ status = "Draft" }) => {
                 </div>
 
                 <span
-                    className={`inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-sm font-semibold ${isCompleted
-                        ? "bg-emerald-50 text-emerald-700"
-                        : "bg-amber-50 text-amber-700"
+                    className={`neu-chip inline-flex items-center gap-1.5 px-4 py-2 text-sm font-semibold ${isCompleted
+                        ? "neu-accent"
+                        : "neu-warn"
                         }`}
                 >
                     {isCompleted ? <CheckCircle2 size={15} /> : <PenLine size={15} />}

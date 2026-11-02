@@ -52,7 +52,7 @@ const FilterBar = ({ filters, setFilters, setKeyword, }) => {
                 name="status"
                 value={filters.status}
                 onChange={handleChange}
-                className="border rounded-xl px-4 py-3 bg-white w-full sm:w-auto"
+                className="neu-input h-12 px-4 py-3 w-full sm:w-auto"
             >
 
                 <option value="all">
@@ -75,7 +75,7 @@ const FilterBar = ({ filters, setFilters, setKeyword, }) => {
                 name="month"
                 value={filters.month}
                 onChange={handleChange}
-                className="border rounded-xl px-4 py-3 bg-white w-full sm:w-auto"
+                className="neu-input h-12 px-4 py-3 w-full sm:w-auto"
             >
 
                 {
@@ -99,7 +99,7 @@ const FilterBar = ({ filters, setFilters, setKeyword, }) => {
                 name="year"
                 value={filters.year}
                 onChange={handleChange}
-                className="border rounded-xl px-4 py-3 bg-white w-full sm:w-auto"
+                className="neu-input h-12 px-4 py-3 w-full sm:w-auto"
             >
 
                 <option value="">
@@ -125,7 +125,7 @@ const FilterBar = ({ filters, setFilters, setKeyword, }) => {
 
             <button
                 onClick={clearFilters}
-                className="w-full sm:w-auto sm:ml-auto rounded-xl border px-5 py-3 hover:bg-slate-100 transition"
+                className="neu-btn h-12 w-full sm:w-auto sm:ml-auto rounded-xl px-5 py-3"
             >
                 Clear Filters
             </button>

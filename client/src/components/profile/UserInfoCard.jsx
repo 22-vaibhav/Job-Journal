@@ -1,30 +1,28 @@
 const SectionHeader = ({ icon, title, subtitle }) => (
     <div className="flex items-center gap-3 mb-7">
-        <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-emerald-50 border border-emerald-100 text-emerald-700 shrink-0">
+        <div className="flex items-center justify-center w-11 h-11 rounded-xl neu-inset-sm neu-accent shrink-0">
             {icon}
         </div>
         <div>
             <h2
-                className="text-lg font-semibold text-slate-900 tracking-tight leading-none"
-                style={{ fontFamily: "'Fraunces', serif" }}
+                className="font-display text-xl font-medium neu-text tracking-tight leading-none"
             >
                 {title}
             </h2>
-            <p className="mt-1 text-xs text-slate-400">{subtitle}</p>
+            <p className="mt-1 text-xs neu-muted">{subtitle}</p>
         </div>
     </div>
 );
 
 const FieldLabel = ({ icon, children }) => (
-    <label className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-wider text-slate-400">
-        <span className="text-slate-300">{icon}</span>
+    <label className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-wider neu-muted">
+        <span className="neu-muted">{icon}</span>
         {children}
     </label>
 );
 
 const fieldInputClasses =
-    "w-full mt-1.5 border border-slate-200 rounded-lg px-3.5 py-2.5 text-slate-900 placeholder:text-slate-400 " +
-    "focus:outline-none focus:ring-2 focus:ring-emerald-700/20 focus:border-emerald-700/60 transition-colors";
+    "neu-input w-full mt-1.5 h-12 px-4 py-3";
 
 const icons = {
     building: (
@@ -96,8 +94,8 @@ const Field = ({ icon, label, isEditing, name, value, onChange, type = "text", f
                     className={fieldInputClasses}
                 />
             ) : (
-                <p className="mt-1.5 font-medium text-slate-800">
-                    {value || <span className="text-slate-400 font-normal">{fallback}</span>}
+                <p className="mt-1.5 font-medium neu-text">
+                    {value || <span className="neu-muted font-normal">{fallback}</span>}
                 </p>
             )
         }
@@ -120,15 +118,10 @@ const UserInfoCard = ({
     };
 
     return (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
 
             {/* Personal Information */}
-            <div className="relative bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_2px_rgba(16,24,40,0.04),0_8px_24px_-8px_rgba(16,24,40,0.10)] p-6 sm:p-8 overflow-hidden">
-                <div
-                    className="absolute inset-x-0 top-0 h-1"
-                    style={{ background: "linear-gradient(90deg, #0F6B5C 0%, #1B9C87 100%)" }}
-                />
-
+            <div className="relative neu-card p-6 sm:p-8 overflow-hidden">
                 <SectionHeader
                     icon={icons.userHeader}
                     title="Personal"
@@ -156,7 +149,7 @@ const UserInfoCard = ({
 
                     <div>
                         <FieldLabel icon={icons.calendar}>Member Since</FieldLabel>
-                        <p className="mt-1.5 font-medium text-slate-800">
+                        <p className="mt-1.5 font-medium neu-text">
                             {new Date(user.createdAt).toLocaleDateString()}
                         </p>
                     </div>
@@ -164,12 +157,7 @@ const UserInfoCard = ({
             </div>
 
             {/* Professional Information */}
-            <div className="relative bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_2px_rgba(16,24,40,0.04),0_8px_24px_-8px_rgba(16,24,40,0.10)] p-6 sm:p-8 overflow-hidden">
-                <div
-                    className="absolute inset-x-0 top-0 h-1"
-                    style={{ background: "linear-gradient(90deg, #0F6B5C 0%, #1B9C87 100%)" }}
-                />
-
+            <div className="relative neu-card p-6 sm:p-8 overflow-hidden">
                 <SectionHeader
                     icon={icons.briefcaseHeader}
                     title="Professional"
@@ -210,7 +198,7 @@ const UserInfoCard = ({
                                         className={fieldInputClasses}
                                     />
                                 ) : (
-                                    <p className="mt-1.5 font-medium text-slate-800">
+                                    <p className="mt-1.5 font-medium neu-text">
                                         {user.experience} Years
                                     </p>
                                 )

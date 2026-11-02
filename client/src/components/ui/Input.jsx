@@ -13,7 +13,7 @@ const Input = ({
             {label && (
                 <label
                     htmlFor={name}
-                    className="block text-sm font-medium text-slate-700"
+                    className="block text-xs font-semibold uppercase tracking-[0.08em] neu-muted"
                 >
                     {label}
                 </label>
@@ -29,18 +29,11 @@ const Input = ({
                 required={required}
                 disabled={disabled}
                 className="
+          neu-input
           w-full
-          rounded-xl
-          border
-          border-slate-300
           px-4
           py-3
-          outline-none
           transition
-          focus:border-blue-500
-          focus:ring-2
-          focus:ring-blue-200
-          disabled:bg-slate-100
         "
             />
         </div>

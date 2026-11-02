@@ -4,11 +4,10 @@ import { changePassword } from "../../services/settingsService";
 import { Eye, EyeOff, ShieldAlert } from "lucide-react";
 
 const fieldClasses =
-    "w-full rounded-xl border border-slate-200 px-4 py-3 pr-12 text-slate-900 " +
-    "focus:outline-none focus:ring-2 focus:ring-emerald-700/20 focus:border-emerald-700/60 transition-colors";
+    "neu-input w-full h-12 px-4 py-3 pr-12 transition-colors";
 
 const FieldLabel = ({ children }) => (
-    <label className="mb-2 block text-xs font-medium uppercase tracking-wider text-slate-400">
+    <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.08em] neu-muted">
         {children}
     </label>
 );
@@ -91,13 +90,12 @@ const AccountSettings = () => {
         <div className="space-y-8">
             <div>
                 <h2
-                    className="text-2xl font-semibold text-slate-900 tracking-tight"
-                    style={{ fontFamily: "'Fraunces', serif" }}
+                    className="font-display text-2xl font-medium neu-text tracking-tight"
                 >
                     Account Settings
                 </h2>
 
-                <p className="mt-2 text-slate-500">
+                <p className="mt-2 neu-muted">
                     Update your account password to keep your account secure.
                 </p>
             </div>
@@ -121,7 +119,7 @@ const AccountSettings = () => {
                         <button
                             type="button"
                             onClick={() => togglePasswordVisibility("current")}
-                            className="absolute inset-y-0 right-3 flex items-center text-slate-400 hover:text-slate-600"
+                            className="neu-link absolute right-1 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-xl neu-muted" aria-label="Show or hide password"
                         >
                             {showPassword.current ? (
                                 <EyeOff size={20} />
@@ -147,7 +145,7 @@ const AccountSettings = () => {
                         <button
                             type="button"
                             onClick={() => togglePasswordVisibility("new")}
-                            className="absolute inset-y-0 right-3 flex items-center text-slate-400 hover:text-slate-600"
+                            className="neu-link absolute right-1 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-xl neu-muted" aria-label="Show or hide password"
                         >
                             {showPassword.new ? (
                                 <EyeOff size={20} />
@@ -173,7 +171,7 @@ const AccountSettings = () => {
                         <button
                             type="button"
                             onClick={() => togglePasswordVisibility("confirm")}
-                            className="absolute inset-y-0 right-3 flex items-center text-slate-400 hover:text-slate-600"
+                            className="neu-link absolute right-1 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-xl neu-muted" aria-label="Show or hide password"
                         >
                             {showPassword.confirm ? (
                                 <EyeOff size={20} />
@@ -187,21 +185,21 @@ const AccountSettings = () => {
                 <button
                     type="submit"
                     disabled={loading}
-                    className="w-full sm:w-auto rounded-xl bg-emerald-700 px-6 py-3 font-semibold text-white shadow-sm transition-colors hover:bg-emerald-800 active:bg-emerald-900 disabled:opacity-50"
+                    className="neu-btn neu-btn-accent h-12 w-full sm:w-auto px-8 py-3"
                 >
                     {loading ? "Updating..." : "Update Password"}
                 </button>
             </form>
 
-            <div className="rounded-xl border border-amber-200 bg-amber-50 p-5">
+            <div className="neu-inset rounded-2xl p-5">
                 <div className="flex items-center gap-2">
-                    <ShieldAlert size={17} className="text-amber-700" />
-                    <h3 className="font-semibold text-amber-900">
+                    <ShieldAlert size={17} className="neu-warn" />
+                    <h3 className="font-semibold neu-text">
                         Password Tips
                     </h3>
                 </div>
 
-                <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-amber-800">
+                <ul className="mt-3 list-disc space-y-2 pl-5 text-sm neu-muted">
                     <li>Use at least 8 characters.</li>
                     <li>Include uppercase, lowercase and numbers.</li>
                     <li>Avoid using your previous passwords.</li>

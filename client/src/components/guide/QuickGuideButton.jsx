@@ -10,7 +10,7 @@ const QuickGuideButton = () => {
         <>
             <button
                 onClick={() => setIsGuideOpen(true)}
-                className="inline-flex items-center gap-2 rounded-xl border border-emerald-200 bg-white px-4 py-2.5 text-sm font-semibold text-emerald-700 shadow-[0_1px_2px_rgba(16,24,40,0.04)] transition-all duration-200 hover:bg-emerald-50 hover:border-emerald-300 hover:shadow-[0_8px_20px_-8px_rgba(15,107,92,0.35)]"
+                className="neu-btn neu-btn-accent inline-flex items-center gap-2 rounded-xl px-4 min-h-11 text-sm"
             >
                 <BookOpen size={17} />
 
